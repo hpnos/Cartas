@@ -1,6 +1,5 @@
 // Sons para cada raridade
 const sounds = {
-  const sounds = {
   "images/reward1.png": new Audio("sounds/teste.mp3"),  // Som para comuns
   "images/reward2.png": new Audio("sounds/laught-muehehehe.mp3"),
   "images/reward3.png": new Audio("sounds/among-us-role-reveal-sound.mp3"),
