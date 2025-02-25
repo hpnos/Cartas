@@ -152,3 +152,6 @@ body {
     width: 90%;
   }
 }
+.close-button:hover {
+  color: rgb(140, 11, 145);
+}
