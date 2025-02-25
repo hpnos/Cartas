@@ -115,23 +115,4 @@ body {
     color: rgb(140, 11, 145);
   }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  #game-board {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 5px;
-  }
-  .card {
-    max-width: 100px;
-  }
-}
 
-@media (max-width: 480px) {
-  #game-board {
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-    gap: 5px;
-  }
-  .card {
-    max-width: 80px;
-  }
-}
