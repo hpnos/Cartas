@@ -1,11 +1,11 @@
 // Sons para cada raridade
 const sounds = {
-  "images/reward1.png": new Audio("teste.mp3"),  // Som para comuns
-  "images/reward2.png": new Audio("laught-muehehehe.mp3"),
-  "images/reward3.png": new Audio("among-us-role-reveal-sound.mp3"),
-  "images/reward4.png": new Audio("sound_uncommon.mp3"), // Som para incomuns
-  "images/reward5.png": new Audio("sound_rare.mp3"),     // Som para raros
-  "images/reward6.png": new Audio("sound_legendary.mp3") // Som para lendários
+  "images/reward1.png": new Audio("sounds/teste.mp3"),  // Som para comuns
+  "images/reward2.png": new Audio("sounds/laught-muehehehe.mp3"),
+  "images/reward3.png": new Audio("sounds/among-us-role-reveal-sound.mp3"),
+  "images/reward4.png": new Audio("sounds/sound_uncommon.mp3"), // Som para incomuns
+  "images/reward5.png": new Audio("sounds/sound_rare.mp3"),     // Som para raros
+  "images/reward6.png": new Audio("sounds/sound_legendary.mp3") // Som para lendários
 };
 
 // Função para tocar o som da raridade correspondente
