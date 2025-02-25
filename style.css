@@ -10,51 +10,58 @@ body {
   height: 100vh;
   margin: 0;
   overflow: hidden;
+  flex-direction: column;
+  padding: 10px;
 }
 
 #game-container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 #game-board {
   display: grid;
-  grid-template-columns: repeat(5, 200px); /* 5 colunas */
-  grid-template-rows: repeat(4, 200px); /* 4 linhas */
-  gap: 20px;
+  grid-template-columns: repeat(5, minmax(100px, 1fr)); /* Ajusta dinamicamente o número de colunas */
+  grid-template-rows: repeat(4, minmax(100px, auto));
+  gap: 10px;
+  max-width: 90vw;
+  justify-content: center;
 }
 
 .card {
-  width:148px;
-  height: 207px;
-  perspective: 1000px; /* Necessário para o efeito de rotação */
+  width: 100%;
+  max-width: 148px;
+  height: auto;
+  aspect-ratio: 2 / 3; /* Mantém a proporção da carta */
+  perspective: 1000px;
 }
 
 .card-inner {
   width: 100%;
   height: 100%;
   position: relative;
-  transform-style: preserve-3d; /* Permite a rotação 3D */
-  transition: transform 0.6s ease-out; /* Faz a animação suave */
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-out;
 }
 
 .card-inner.flipped {
-  transform: rotateY(180deg); /* Rotaciona corretamente */
+  transform: rotateY(180deg);
 }
+
 .card-face {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Impede que o verso da carta seja visível quando virado */
+  backface-visibility: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .card-face.front {
-
   background-size: cover;
   background-image: url("images/reward1.png");
-  
 }
 
 .card-face.back {
@@ -67,43 +74,44 @@ body {
   border-radius: 10px;
 }
 
-/* Modal: Fundo e conteúdo */
 .modal {
-  display: none; /* Inicialmente oculto */
+  display: none;
   position: fixed;
   z-index: 999;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro */
-
+  background-color: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 20px;
 }
 
 .modal-content {
-
-  padding: 30px;
+  background: #444;
+  padding: 20px;
   border-radius: 20px;
   text-align: center;
+  width: 90%;
+  max-width: 400px;
 }
 
 #reward-message {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 20px;
+  margin-bottom: 15px;
 }
 
 #reward-image img {
-  width: 87%;
+  width: 100%;
   height: auto;
   border-radius: 10px;
 }
 
 .close-button {
   color: #fff;
-  font-size: 36px;
+  font-size: 30px;
   font-weight: bold;
   cursor: pointer;
   position: absolute;
@@ -113,4 +121,34 @@ body {
 
 .close-button:hover {
   color: rgb(140, 11, 145);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  #game-board {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 5px;
+  }
+  .card {
+    max-width: 100px;
+  }
+  .modal-content {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  #game-board {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 5px;
+  }
+  .card {
+    max-width: 80px;
+  }
+  #reward-message {
+    font-size: 16px;
+  }
+  .modal-content {
+    width: 90%;
+  }
 }
