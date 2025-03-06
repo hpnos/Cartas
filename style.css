@@ -96,9 +96,10 @@ body {
 }
 
 #reward-image img {
-  width: 87%;
-  height: auto;
-  border-radius: 10px;
+  width: 600px;
+  height: 800px;
+  object-fit: contain; /* Garante que a imagem mantenha sua proporção */
+  border-radius: 30px;
 }
 
 .close-button {

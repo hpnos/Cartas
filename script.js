@@ -31,6 +31,11 @@ addRewards("images/reward3.png", 47);
 addRewards("images/reward4.png", 28);
 addRewards("images/reward5.png", 18);
 addRewards("images/reward6.png", 7);
+addRewards("images/reward7.png", 47);
+addRewards("images/reward8.png", 47);
+addRewards("images/reward9.png", 47);
+addRewards("images/reward10.png", 47);
+addRewards("images/reward11.png", 47);
 
 // Embaralha as recompensas para garantir aleatoriedade
 function shuffleRewards(rewardsArray) {
