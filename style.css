@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #333;
   background-size: cover;
-  background-image: url("images/fundo.jpeg");
+  background-image: url("images/fundo.jpg");
   color: white;
   display: flex;
   justify-content: center;
@@ -54,7 +54,7 @@ body {
 .card-face.front {
 
   background-size: cover;
-  background-image: url("images/reward1.png");
+  background-image: url("images/Verso.png");
   
 }
 
