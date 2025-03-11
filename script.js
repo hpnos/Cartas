@@ -31,8 +31,8 @@ function playSound(image) {
 
 // Lista das recompensas com as novas chances
 const rewardPool = [
-  // Comuns (56% no total → 8 recompensas, cada uma com 7%)
-  { image: "images/reward1.png", chance: 7 },// TARGARYEN
+  // Comuns (57% no total → 7 recompensas, cada uma com 7% e uma com 8%)
+  { image: "images/reward1.png", chance: 8 },// TARGARYEN
   { image: "images/reward6.png", chance: 7 }, // CASSIEL
   { image: "images/reward7.png", chance: 7 }, // GUERRA CIVIL
   { image: "images/reward9.png", chance: 7 }, // XAHAY E RAKAN
@@ -55,8 +55,8 @@ const rewardPool = [
   { image: "images/reward16.png", chance: 3.75 }, // SYLVIAD
   { image: "images/reward19.png", chance: 3.75 }, // FERA
 
-  // Lendárias (3% no total → 2 recompensas, cada uma com 1.5%)
-  { image: "images/reward13.png", chance: 2 }, // DR
+  // Lendárias (1% no total → 2 recompensas, cada uma com 0.5%)
+  { image: "images/reward13.png", chance: 1 }, // DR
   { image: "images/reward20.png", chance: 0 },
 ];
 
