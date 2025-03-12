@@ -56,8 +56,8 @@ const rewardPool = [
   { image: "images/reward19.png", chance: 3.75 }, // FERA
 
   // Lendárias (1% no total → 2 recompensas, cada uma com 0.5%)
-  { image: "images/reward13.png", chance: 1 }, // DR
-  { image: "images/reward20.png", chance: 0 },
+  { image: "images/reward13.png", chance: 0.5 }, // DR
+  { image: "images/reward18.png", chance: 0.5 }, // Ravel
 ];
 
 // Função para escolher uma recompensa com base na probabilidade
