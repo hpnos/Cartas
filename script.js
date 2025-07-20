@@ -32,32 +32,41 @@ function playSound(image) {
 // Lista das recompensas com as novas chances
 const rewardPool = [
   // Comuns (57% no total → 7 recompensas, cada uma com 7% e uma com 8%)
-  { image: "images/reward1.png", chance: 7 },// TARGARYEN
-  { image: "images/reward6.png", chance: 8 }, // CASSIEL
-  { image: "images/reward7.png", chance: 7 }, // GUERRA CIVIL
-  { image: "images/reward9.png", chance: 7 }, // XAHAY E RAKAN
-  { image: "images/reward10.png", chance: 7 }, // PORINHO
-  { image: "images/reward12.png", chance: 7 }, // NICKY
-  { image: "images/reward14.png", chance: 7 },// ORIXA
-  { image: "images/reward17.png", chance: 7 }, // MOIRA
+  { image: "images/23 transformers.png", chance: 7 },
+  { image: "images/24 Gabriel.png", chance: 8 }, 
+  { image: "images/25 Kratos.png", chance: 8 }, 
+  { image: "images/26 Karma.png", chance: 7 }, 
+  { image: "images/28 Mutano.png", chance: 7 }, 
+  { image: "images/34 crazy.png", chance: 7 }, 
+  { image: "images/35 speak.png", chance: 7 },
+  { image: "images/39 datena.png", chance: 7 }, 
+  { image: "images/40 galaxia.png", chance: 7 }, 
+  // cartas que serao enviadas dps{ image: "images/44 morgan.png", chance: 7 }, // 44
+  //cartas que serao enviadas dps { image: "images/42 sylvie.png", chance: 7 }, // 42
 
   // Incomuns (26% no total → 6 recompensas, cada uma com 4.33%)
-  { image: "images/reward2.png", chance: 4.33 }, //CLUBER
-  { image: "images/reward4.png", chance: 4.33 }, //ROLF
-  { image: "images/reward8.png", chance: 4.33 }, // MISTICO
-  { image: "images/reward15.png", chance: 4.33 }, // DOLY
-  { image: "images/reward20.png", chance: 4.33 }, // OTAKINHO
-  { image: "images/reward5.png", chance: 4.33 }, // MARIBELA
+  { image: "images/22 Cartomante.png", chance: 4.33 },
+  { image: "images/27 Steven.png", chance: 4.33 },
+  { image: "images/29 widow.png", chance: 4.33 },
+  { image: "images/30 badice.png", chance: 4.33 }, 
+  { image: "images/32 Engana.png", chance: 4.33 }, 
+  { image: "images/32 37 clove.png", chance: 4.33 }, 
+  { image: "images/32 33 deolane.png", chance: 4.33 }, 
+  //{ image: "images/32 Engana.png", chance: 4.33 }, 
+  //{ image: "images/32 Engana.png", chance: 4.33 }, 
 
   // Raras (15% no total → 4 recompensas, cada uma com 3.75%)
-  { image: "images/reward3.png", chance: 3.75 }, // DR ESTRANHO
-  { image: "images/reward11.png", chance: 3.75 }, // KAIROS
-  { image: "images/reward16.png", chance: 3.75 }, // SYLVIAD
-  { image: "images/reward19.png", chance: 3.75 }, // FERA
+  { image: "images/31 venenoso.png", chance: 3.69 }, 
+  //{ image: "images/reward11.png", chance: 3.75 }, 
+  //{ image: "images/reward16.png", chance: 3.75 },
+  //{ image: "images/reward19.png", chance: 3.75 }, 
+  //{ image: "images/reward19.png", chance: 3.75 }, 
+  //{ image: "images/reward19.png", chance: 3.75 }, 
 
   // Lendárias (1% no total → 2 recompensas, cada uma com 0.5%)
-  { image: "images/reward13.png", chance: 0.5 }, // DR
-  { image: "images/reward18.png", chance: 0.5 }, // Ravel
+  { image: "images/21 Dogou.png", chance: 0.5 }, 
+  { image: "images/38 ravel.png", chance: 0.5 }, 
+  //{ image: "images/38 ravel.png", chance: 0.5 }, 
 ];
 
 // Função para escolher uma recompensa com base na probabilidade
