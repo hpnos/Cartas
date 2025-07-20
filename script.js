@@ -50,8 +50,8 @@ const rewardPool = [
   { image: "images/29 widow.png", chance: 4.33 },
   { image: "images/30 badice.png", chance: 4.33 }, 
   { image: "images/32 Engana.png", chance: 4.33 }, 
-  { image: "images/32 37 clove.png", chance: 4.33 }, 
-  { image: "images/32 33 deolane.png", chance: 4.33 }, 
+  { image: "images/37 clove.png", chance: 4.33 }, 
+  { image: "images/33 deolane.png", chance: 4.33 }, 
   //{ image: "images/32 Engana.png", chance: 4.33 }, 
   //{ image: "images/32 Engana.png", chance: 4.33 }, 
 
