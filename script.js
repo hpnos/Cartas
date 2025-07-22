@@ -66,7 +66,7 @@ const sounds = {
   "images/43 snape.png": new Audio("sounds/43.mp3"),
   "images/46 sapatao.png": new Audio("sounds/46.mp3"),
   "images/45 shogun.png": new Audio("sounds/45.mp3"),
-  "images/42 syivie": new Audio("sounds/42.mp3"),
+  "images/42 syivie.png": new Audio("sounds/42.mp3"),
   "images/47 galacta.png": new Audio("sounds/47.mp3"),
   "images/36 ariana.png": new Audio("sounds/36.mp3"),
   //"images/48 agatha.png": new Audio("sounds/48.mp3"),
