@@ -69,6 +69,7 @@ const sounds = {
   "images/42 syivie.png": new Audio("sounds/42.mp3"),
   "images/47 galacta.png": new Audio("sounds/47.mp3"),
   "images/36 ariana.png": new Audio("sounds/36.mp3"),
+  "images/44 morgan.png": new Audio("sounds/36.mp3"),
   //"images/48 agatha.png": new Audio("sounds/48.mp3"),
   //"images/49 yuk.png": new Audio("sounds/49.mp3"),
   "images/50 magik.png": new Audio("sounds/50.mp3"),
@@ -96,7 +97,7 @@ const rewardPool = [
   { image: "images/39 datena.png", chance: 4.7 }, 
   { image: "images/40 galaxia.png", chance: 4.7 }, 
   { image: "images/36 ariana.png", chance: 4.7 },
-  // { image: "images/44 morgan.png", chance: 4.7 }, // 44
+ { image: "images/44 morgan.png", chance: 4.7 }, // 44
   { image: "images/42 syivie.png", chance: 4.7 }, // 42
   
 
