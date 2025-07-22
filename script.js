@@ -64,11 +64,11 @@ const sounds = {
   "images/21 Dogou.png": new Audio("sounds/21.mp3"),
   "images/38 ravel.png": new Audio("sounds/38.mp3"),
   "images/43 snape.png": new Audio("sounds/43.mp3"),
-  //"images/46 sapatao.png": new Audio("sounds/46.mp3"),
+  "images/46 sapatao.png": new Audio("sounds/46.mp3"),
   "images/45 shogun.png": new Audio("sounds/45.mp3"),
   "images/42 syivie": new Audio("sounds/42.mp3"),
-  "images/47 galacta.png": new Audio("47.mp3"),
-  //"images/48 agatha.png": new Audio("48.mp3"),
+  "images/47 galacta.png": new Audio("sounds/47.mp3"),
+  //"images/48 agatha.png": new Audio("sounds/48.mp3"),
   //"images/49 yuk.png": new Audio("sounds/49.mp3"),
   "images/50 magik.png": new Audio("sounds/50.mp3"),
   //"images/41 loki.png": new Audio("sounds/41.mp3"),
@@ -85,17 +85,19 @@ function playSound(image) {
 // Lista das recompensas com as novas chances
 const rewardPool = [
   // Comuns (57% no total → 7 recompensas, cada uma com 7% e uma com 8%)
-  { image: "images/23 transformers.png", chance: 5.7 },
-  { image: "images/24 Gabriel.png", chance: 5.7 }, 
-  { image: "images/25 Kratos.png", chance: 5.7 }, 
-  { image: "images/26 Karma.png", chance: 5.7 }, 
-  { image: "images/28 Mutano.png", chance: 5.7 }, 
-  { image: "images/34 crazy.png", chance: 5.7 }, 
-  { image: "images/35 speak.png", chance: 5.7 },
-  { image: "images/39 datena.png", chance: 5.7 }, 
-  { image: "images/40 galaxia.png", chance: 5.7 }, 
-  // { image: "images/44 morgan.png", chance: 5.7 }, // 44
-  { image: "images/42 syivie.png", chance: 5.7 }, // 42
+  { image: "images/23 transformers.png", chance: 4.7 },
+  { image: "images/24 Gabriel.png", chance: 4.7 }, 
+  { image: "images/25 Kratos.png", chance: 4.7 }, 
+  { image: "images/26 Karma.png", chance: 4.7 }, 
+  { image: "images/28 Mutano.png", chance: 4.7 }, 
+  { image: "images/34 crazy.png", chance: 4.7 }, 
+  { image: "images/35 speak.png", chance: 4.7 },
+  { image: "images/39 datena.png", chance: 4.7 }, 
+  { image: "images/40 galaxia.png", chance: 4.7 }, 
+  { image: "images/36 ariana.png", chance: 4.7 },
+  // { image: "images/44 morgan.png", chance: 4.7 }, // 44
+  { image: "images/42 syivie.png", chance: 4.7 }, // 42
+  
 
   // Incomuns (26% no total → 6 recompensas, cada uma com 4.33%)
   { image: "images/22 Cartomante.png", chance: 3.89 },
@@ -106,7 +108,7 @@ const rewardPool = [
   { image: "images/37 clove.png", chance: 3.89 }, 
   { image: "images/33 deolane.png", chance: 3.89 }, 
   { image: "images/43 snape.png", chance: 3.89 }, 
-  //{ image: "images/46 sapatao.png", chance: 3.89 }, 
+  { image: "images/46 sapatao.png", chance: 3.89 }, 
 
   // Raras (15% no total → 4 recompensas, cada uma com 3.75%)
   { image: "images/31 venenoso.png", chance: 1.5 }, 
