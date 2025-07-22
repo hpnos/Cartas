@@ -1,42 +1,16 @@
 // Sons para cada raridade
 
+
   const imagens = [
-  "images/23 transformers.png",
-   "images/24 Gabriel.png",
-   "images/25 Kratos.png",
-   "images/26 Karma.png",
-   "images/28 Mutano.png",
-   "images/34 crazy.png",
-   "images/35 speak.png",
-   "images/39 datena.png" ,
-   "images/40 galaxia.png", 
-   "images/44 morgan.png", 
-   "images/42 syivie.png", 
-   "images/22 Cartomante.png", 
-   "images/27 Steven.png", 
-   "images/29 widow.png", 
-   "images/30 badice.png",  
-   "images/32 Engana.png", 
-   "images/37 clove.png", 
-   "images/33 deolane.png", 
-   "images/43 snape.png", 
-   "images/46 sapatao.png",
-   "images/31 venenoso.png",  
-   "images/45 shogun.png",  
-   "images/47 galacta.png", 
-   "images/48 agatha.png",  
-   "images/49 yuk.png", 
-   "images/50 magik.png", 
-   "images/21 Dogou.png", 
-   "images/38 ravel.png", 
-   "images/41 loki.png", 
+    "images/img1.png",
+    "images/img2.jpg",
+    "images/img3.webp"
   ];
 
   imagens.forEach(src => {
     const img = new Image();
     img.src = src;
   });
-
 
 
 
@@ -233,6 +207,20 @@ btnMudarVerso.addEventListener("click", () => {
   versosCartas.forEach((verso) => {
     verso.style.backgroundImage = `url("${versos[indiceAtual]}")`;
   });
+});
+
+// botao mudar fundo
+const fundos = [
+  "images/fundo.jpg",
+  "images/fundo2.jpg",
+  "images/fundo3.jpg"
+];
+
+let indiceFundo = 0;
+
+document.getElementById("btn-mudar-fundo").addEventListener("click", () => {
+  indiceFundo = (indiceFundo + 1) % fundos.length;
+  document.body.style.backgroundImage = `url('${fundos[indiceFundo]}')`;
 });
 
 
