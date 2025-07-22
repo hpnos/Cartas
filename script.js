@@ -237,7 +237,7 @@ btnMudarVerso.addEventListener("click", () => {
 
 // botao mudar fundo
 const fundos = [
-  "images/fundo.jpg",
+  "images/fundo.png",
   "images/fundo2.jpg",
   "images/fundo3.jpg"
 ];
