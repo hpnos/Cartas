@@ -1,4 +1,19 @@
 // Sons para cada raridade
+<script>
+  const imagens = [
+    "images/img1.png",
+    "images/img2.jpg",
+    "images/img3.webp"
+  ];
+
+  imagens.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+</script>
+
+
+
 const sounds = {
   "images/23 transformers.png": new Audio("sounds/23.mp3"),  
   "images/24 Gabriel.png": new Audio("sounds/24.mp3"),
