@@ -29,7 +29,7 @@ const sounds = {
   "images/29 widow.png": new Audio("sounds/29.mp3"),
   "images/30 badice.png": new Audio("sounds/30.mp3"),
   "images/32 Engana.png": new Audio("sounds/32.mp3"),
-  "images/37 clove.png": new Audio("sounds/durmo.mp3"),
+  "images/37 clove.png": new Audio("sounds/Durmo.mp3"),
   "images/33 deolane.png": new Audio("sounds/33.mp3"),
   "images/31 venenoso.png": new Audio("sounds/31.mp3"),
   "images/21 Dogou.png": new Audio("sounds/21.mp3"),
