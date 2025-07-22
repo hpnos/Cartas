@@ -1,25 +1,34 @@
 // Sons para cada raridade
 const sounds = {
-  "images/reward1.png": new Audio("sounds/Targaryen.mp3"),  
-  "images/reward2.png": new Audio("sounds/Cluber.mp3"),
-  "images/reward3.png": new Audio("sounds/Drestranho.mp3"),
-  "images/reward4.png": new Audio("sounds/Rolf.mp3"), 
-  "images/reward5.png": new Audio("sounds/Maribella.mp3"),     
-  "images/reward6.png": new Audio("sounds/Cassiel.mp3"),
-  "images/reward7.png": new Audio("sounds/ironmanecap.mp3"),
-  "images/reward8.png": new Audio("sounds/Mistico.mp3"),
-  "images/reward9.png": new Audio("sounds/RakaneXayah.mp3"),
-  "images/reward10.png": new Audio("sounds/PorinhodoMar.mp3"),
-  "images/reward11.png": new Audio("sounds/Kairos.mp3"),
-  "images/reward12.png": new Audio("sounds/Nicky.mp3"),
-  "images/reward13.png": new Audio("sounds/Felicarujo.mp3"),
-  "images/reward14.png": new Audio("sounds/MaribellaOrixa.mp3"),
-  "images/reward15.png": new Audio("sounds/Dollynho.mp3"),
-  "images/reward16.png": new Audio("sounds/Sylveon.mp3"),
-  "images/reward17.png": new Audio("sounds/Moira.mp3"),
-  "images/reward18.png": new Audio("sounds/Ravel.mp3"),
-  "images/reward19.png": new Audio("sounds/Feraligatr.mp3"),
-  "images/reward20.png": new Audio("sounds/Takinho.mp3"),
+  "images/23 transformers.png": new Audio("sounds/23.mp3"),  
+  "images/24 Gabriel.png": new Audio("sounds/24.mp3"),
+  "images/25 Kratos.png": new Audio("sounds/25.mp3"),
+  "images/26 Karma.png": new Audio("sounds/26.mp3"), 
+  "images/28 Mutano.png": new Audio("sounds/28.mp3"),     
+  "images/34 crazy.png": new Audio("sounds/34.mp3"),
+  "images/35 speak.png": new Audio("sounds/35.mp3"),
+  "images/39 datena.png": new Audio("sounds/39.mp3"),
+  "images/40 galaxia.png": new Audio("sounds/40.mp3"),
+  "images/22 Cartomante.png": new Audio("sounds/22.mp3"),
+  "images/27 Steven.png": new Audio("sounds/27.mp3"),
+  "images/29 widow.png": new Audio("sounds/29.mp3"),
+  "images/30 badice.png": new Audio("sounds/30.mp3"),
+  "images/32 Engana.png": new Audio("sounds/32.mp3"),
+  "images/37 clove.png": new Audio("sounds/durmo.mp3"),
+  "images/33 deolane.png": new Audio("sounds/33.mp3"),
+  "images/31 venenoso.png": new Audio("sounds/31.mp3"),
+  "images/21 Dogou.png": new Audio("sounds/21.mp3"),
+  "images/38 ravel.png": new Audio("sounds/38.mp3"),
+  "images/43 snape.png": new Audio("sounds/43.mp3"),
+  //"images/46 sapatao.png": new Audio("sounds/46.mp3"),
+  "images/45 shogun.png": new Audio("sounds/45.mp3"),
+  "images/42 syivie": new Audio("sounds/42.mp3"),
+  "images/47 galacta.png": new Audio("47.mp3"),
+  //"images/48 agatha.png": new Audio("48.mp3"),
+  //"images/49 yuk.png": new Audio("sounds/49.mp3"),
+  "images/50 magik.png": new Audio("sounds/50.mp3"),
+  //"images/41 loki.png": new Audio("sounds/41.mp3"),
+  
 };
 
 // Função para tocar o som da raridade correspondente
@@ -32,41 +41,41 @@ function playSound(image) {
 // Lista das recompensas com as novas chances
 const rewardPool = [
   // Comuns (57% no total → 7 recompensas, cada uma com 7% e uma com 8%)
-  { image: "images/23 transformers.png", chance: 7 },
-  { image: "images/24 Gabriel.png", chance: 8 }, 
-  { image: "images/25 Kratos.png", chance: 8 }, 
-  { image: "images/26 Karma.png", chance: 7 }, 
-  { image: "images/28 Mutano.png", chance: 7 }, 
-  { image: "images/34 crazy.png", chance: 7 }, 
-  { image: "images/35 speak.png", chance: 7 },
-  { image: "images/39 datena.png", chance: 7 }, 
-  { image: "images/40 galaxia.png", chance: 7 }, 
-  // cartas que serao enviadas dps{ image: "images/44 morgan.png", chance: 7 }, // 44
-  //cartas que serao enviadas dps { image: "images/42 sylvie.png", chance: 7 }, // 42
+  { image: "images/23 transformers.png", chance: 5.7 },
+  { image: "images/24 Gabriel.png", chance: 5.7 }, 
+  { image: "images/25 Kratos.png", chance: 5.7 }, 
+  { image: "images/26 Karma.png", chance: 5.7 }, 
+  { image: "images/28 Mutano.png", chance: 5.7 }, 
+  { image: "images/34 crazy.png", chance: 5.7 }, 
+  { image: "images/35 speak.png", chance: 5.7 },
+  { image: "images/39 datena.png", chance: 5.7 }, 
+  { image: "images/40 galaxia.png", chance: 5.7 }, 
+  // { image: "images/44 morgan.png", chance: 5.7 }, // 44
+  { image: "images/42 syivie.png", chance: 5.7 }, // 42
 
   // Incomuns (26% no total → 6 recompensas, cada uma com 4.33%)
-  { image: "images/22 Cartomante.png", chance: 4.33 },
-  { image: "images/27 Steven.png", chance: 4.33 },
-  { image: "images/29 widow.png", chance: 4.33 },
-  { image: "images/30 badice.png", chance: 4.33 }, 
-  { image: "images/32 Engana.png", chance: 4.33 }, 
-  { image: "images/37 clove.png", chance: 4.33 }, 
-  { image: "images/33 deolane.png", chance: 4.33 }, 
-  //{ image: "images/32 Engana.png", chance: 4.33 }, 
-  //{ image: "images/32 Engana.png", chance: 4.33 }, 
+  { image: "images/22 Cartomante.png", chance: 3.89 },
+  { image: "images/27 Steven.png", chance: 3.89 },
+  { image: "images/29 widow.png", chance: 3.89 },
+  { image: "images/30 badice.png", chance: 3.89 }, 
+  { image: "images/32 Engana.png", chance: 3.89 }, 
+  { image: "images/37 clove.png", chance: 3.89 }, 
+  { image: "images/33 deolane.png", chance: 3.89 }, 
+  { image: "images/43 snape.png", chance: 3.89 }, 
+  //{ image: "images/46 sapatao.png", chance: 3.89 }, 
 
   // Raras (15% no total → 4 recompensas, cada uma com 3.75%)
-  { image: "images/31 venenoso.png", chance: 3.69 }, 
-  //{ image: "images/reward11.png", chance: 3.75 }, 
-  //{ image: "images/reward16.png", chance: 3.75 },
-  //{ image: "images/reward19.png", chance: 3.75 }, 
-  //{ image: "images/reward19.png", chance: 3.75 }, 
-  //{ image: "images/reward19.png", chance: 3.75 }, 
+  { image: "images/31 venenoso.png", chance: 1.5 }, 
+  { image: "images/45 shogun.png", chance: 1.5 }, 
+  { image: "images/47 galacta.png", chance: 1.5 },
+  //{ image: "images/48 agatha.png", chance: 1.5 }, 
+  //{ image: "images/49 yuk.png", chance: 1.5}, 
+  { image: "images/50 magik.png", chance: 1.5}, 
 
   // Lendárias (1% no total → 2 recompensas, cada uma com 0.5%)
   { image: "images/21 Dogou.png", chance: 0.5 }, 
   { image: "images/38 ravel.png", chance: 0.5 }, 
-  //{ image: "images/38 ravel.png", chance: 0.5 }, 
+  //{ image: "images/41 loki.png", chance: 0.5 }, 
 ];
 
 // Função para escolher uma recompensa com base na probabilidade
@@ -114,7 +123,79 @@ for (let i = 0; i < 20; i++) {
   });
 
   gameBoard.appendChild(card);
+
 }
+
+const modalContent = document.querySelector("#reward-modal .modal-content");
+
+document.getElementById("btn-carta-especial").addEventListener("click", () => {
+  const modal = document.getElementById("reward-modal");
+  const rewardImage = document.getElementById("reward-image");
+  const rewardMessage = document.getElementById("reward-message");
+  const audioEspecial = document.getElementById("audio-carta-especial");
+
+  rewardImage.innerHTML = `<img src="images/carta-especial.png" alt="Carta Especial">`;
+  
+  
+  modal.style.display = "flex";
+  gameBoard.style.display = "none";
+
+  // Remove e adiciona a classe para reiniciar a animação
+  modalContent.classList.remove("animar");
+  void modalContent.offsetWidth; // força reflow para resetar animação
+  modalContent.classList.add("animar");
+
+  audioEspecial.currentTime = 0;
+  audioEspecial.play();
+});
+
+
+
+// Função para mostrar carta especial
+document.getElementById("btn-carta-especial").addEventListener("click", () => {
+  const modal = document.getElementById("reward-modal");
+  const rewardImage = document.getElementById("reward-image");
+  const rewardMessage = document.getElementById("reward-message");
+  const audioEspecial = document.getElementById("audio-carta-especial");
+
+  // Define a imagem e o texto
+  rewardImage.innerHTML = `<img src="images/37 Clove pos morte.png" alt="Carta Especial">`;
+  
+  
+  // Exibe modal
+  modal.style.display = "flex";
+  gameBoard.style.display = "none";
+
+  // Toca som especial
+  audioEspecial.currentTime = 0;
+  audioEspecial.play();
+});
+
+//Botao de mudar verso
+const versos = [
+  'images/Verso.png',
+  'images/Verso 2.png',
+  'images/Verso.png'
+];
+
+let indiceAtual = 0;
+
+
+const btnMudarVerso = document.getElementById("btn-mudar-verso");
+const versosCartas = document.querySelectorAll(".card-face.front");
+
+btnMudarVerso.addEventListener("click", () => {
+  // Atualiza o índice para a próxima imagem
+  indiceAtual = (indiceAtual + 1) % versos.length;
+
+  // Atualiza o backgroundImage de todas as cartas
+  versosCartas.forEach((verso) => {
+    verso.style.backgroundImage = `url("${versos[indiceAtual]}")`;
+  });
+});
+
+
+
 
 // Fechar o modal e reiniciar o jogo
 document.getElementById("close-modal").addEventListener("click", () => {
