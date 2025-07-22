@@ -34,9 +34,6 @@
   "images/Verso.png",
   "images/Verso 2.png",
   "images/Verso3.png"
-  "images/fundo.png",
-  "images/fundo2.jpg",
-  "images/fundo3.jpg"
   ];
 
   imagens.forEach(src => {
