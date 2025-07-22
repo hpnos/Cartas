@@ -86,9 +86,12 @@ body {
 
 .modal-content {
 
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
+  
+  position: relative; /* já está para conter o absolute */
+  overflow: hidden;
+  z-index: 1;
+
+
 }
 
 #reward-message {
@@ -103,6 +106,88 @@ body {
   border-radius: 30px;
 }
 
+
+
+
+
+#btn-mudar-verso-container {
+  position: fixed;
+  top: 15px;
+  left: 60px;  
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+}
+
+#btn-mudar-verso {
+  opacity: 0;
+  padding: 6px 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #0099ff;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  
+  
+}
+
+#btn-mudar-verso-container:hover #btn-mudar-verso {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+#btn-container {
+  position: fixed;
+  top: 15px;
+  left: 15px;  
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+}
+
+
+@keyframes abrirModal {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-content.animar {
+  animation: abrirModal 0.4s ease forwards;
+}
+
+#btn-carta-especial {
+  opacity: 0;
+  padding: 6px 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ff00cc;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  
+}
+
+#btn-container:hover #btn-carta-especial {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
 .close-button {
   color: #fff;
   font-size: 36px;
@@ -110,7 +195,7 @@ body {
   cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 20px;
+  right: 1px;
 }
 
 .close-button:hover {
