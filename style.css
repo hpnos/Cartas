@@ -108,7 +108,7 @@ body {
 
 
 
-
+/* botao que muda o verso */
 
 #btn-mudar-verso-container {
   position: fixed;
@@ -166,6 +166,7 @@ body {
   animation: abrirModal 0.4s ease forwards;
 }
 
+/*carta especial */
 #btn-carta-especial {
   opacity: 0;
   padding: 6px 12px;
@@ -182,6 +183,34 @@ body {
 }
 
 #btn-container:hover #btn-carta-especial {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* botao mudar fundo */
+#btn-mudar-fundo-container {
+ position: fixed;
+  top: 50px;
+  left: 60px;  
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+}
+
+#btn-mudar-fundo {
+  opacity: 0;
+  padding: 6px 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #00cc88;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#btn-mudar-fundo-container:hover #btn-mudar-fundo {
   opacity: 1;
   pointer-events: auto;
 }
