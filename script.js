@@ -1,5 +1,5 @@
 // Sons para cada raridade
-<script>
+
   const imagens = [
   "images/23 transformers.png",
    "images/24 Gabriel.png",
@@ -36,7 +36,7 @@
     const img = new Image();
     img.src = src;
   });
-</script>
+
 
 
 
