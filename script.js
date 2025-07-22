@@ -2,9 +2,35 @@
 
 
   const imagens = [
-    "images/img1.png",
-    "images/img2.jpg",
-    "images/img3.webp"
+  "images/23 transformers.png", 
+  "images/24 Gabriel.png",  
+  "images/25 Kratos.png",  
+  "images/26 Karma.png",  
+  "images/28 Mutano.png",  
+  "images/34 crazy.png",  
+  "images/35 speak.png", 
+  "images/39 datena.png",  
+  "images/40 galaxia.png",  
+  "images/44 morgan.png", 
+  "images/42 syivie.png",  
+  "images/22 Cartomante.png",
+  "images/27 Steven.png",
+  "images/29 widow.png",
+  "images/30 badice.png", 
+  "images/32 Engana.png", 
+  "images/37 clove.png", 
+  "images/33 deolane.png", 
+  "images/43 snape.png", 
+  "images/46 sapatao.png",
+  "images/31 venenoso.png", 
+  "images/45 shogun.png", 
+  "images/47 galacta.png",
+  "images/48 agatha.png", 
+  "images/49 yuk.png",
+  "images/50 magik.png",
+  "images/21 Dogou.png",
+  "images/38 ravel.png",
+  "images/41 loki.png",
   ];
 
   imagens.forEach(src => {
@@ -190,7 +216,7 @@ document.getElementById("btn-carta-especial").addEventListener("click", () => {
 const versos = [
   'images/Verso.png',
   'images/Verso 2.png',
-  'images/Verso.png'
+  'images/Verso3.png'
 ];
 
 let indiceAtual = 0;
