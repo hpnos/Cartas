@@ -31,6 +31,12 @@
   "images/21 Dogou.png",
   "images/38 ravel.png",
   "images/41 loki.png",
+  "images/Verso.png",
+  "images/Verso 2.png",
+  "images/Verso3.png"
+  "images/fundo.png",
+  "images/fundo2.jpg",
+  "images/fundo3.jpg"
   ];
 
   imagens.forEach(src => {
