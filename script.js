@@ -70,10 +70,10 @@ const sounds = {
   "images/47 galacta.png": new Audio("sounds/47.mp3"),
   "images/36 ariana.png": new Audio("sounds/36.mp3"),
   "images/44 morgan.png": new Audio("sounds/44.mp3"),
-  //"images/48 agatha.png": new Audio("sounds/48.mp3"),
+  "images/48 agatha.png": new Audio("sounds/48.mp3"),
   //"images/49 yuk.png": new Audio("sounds/49.mp3"),
   "images/50 magik.png": new Audio("sounds/50.mp3"),
-  //"images/41 loki.png": new Audio("sounds/41.mp3"),
+  "images/41 loki.png": new Audio("sounds/41.mp3"),
   
 };
 
@@ -116,14 +116,14 @@ const rewardPool = [
   { image: "images/31 venenoso.png", chance: 1.5 }, 
   { image: "images/45 shogun.png", chance: 1.5 }, 
   { image: "images/47 galacta.png", chance: 1.5 },
-  //{ image: "images/48 agatha.png", chance: 1.5 }, 
+  { image: "images/48 agatha.png", chance: 1.5 }, 
   //{ image: "images/49 yuk.png", chance: 1.5}, 
   { image: "images/50 magik.png", chance: 1.5}, 
 
   // Lendárias (1% no total → 2 recompensas, cada uma com 0.5%)
   { image: "images/21 Dogou.png", chance: 0.5 }, 
   { image: "images/38 ravel.png", chance: 0.5 }, 
-  //{ image: "images/41 loki.png", chance: 0.5 }, 
+  { image: "images/41 loki.png", chance: 0.5 }, 
 ];
 
 // Função para escolher uma recompensa com base na probabilidade
