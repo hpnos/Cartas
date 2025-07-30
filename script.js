@@ -97,7 +97,7 @@ const rewardPool = [
   { image: "images/39 datena.png", chance: 4.7 }, 
   { image: "images/40 galaxia.png", chance: 4.7 }, 
   { image: "images/36 ariana.png", chance: 4.7 },
- { image: "images/44 morgan.png", chance: 4.7 }, // 44
+  { image: "images/44 morgan.png", chance: 4.7 }, // 44
   { image: "images/42 syivie.png", chance: 4.7 }, // 42
   
 
@@ -223,11 +223,11 @@ document.getElementById("btn-carta-especial").addEventListener("click", () => {
 const versos = [
   'images/Verso.png',
   'images/Verso 2.png',
-  'images/Verso3.png'
-  'images/Verso4.png'
-  'images/Verso5.png'
-  'images/Verso6.png'
-  'images/Verso7.png'
+  'images/Verso 3.png'
+  'images/Verso 4.png'
+  'images/Verso 5.png'
+  'images/Verso 6.png'
+  'images/Verso 7.png'
 ];
 
 let indiceAtual = 0;
