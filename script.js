@@ -224,6 +224,10 @@ const versos = [
   'images/Verso.png',
   'images/Verso 2.png',
   'images/Verso3.png'
+  'images/Verso4.png'
+  'images/Verso5.png'
+  'images/Verso6.png'
+  'images/Verso7.png'
 ];
 
 let indiceAtual = 0;
