@@ -81,51 +81,51 @@ function playSound(image) {
 }
 
 // Lista das recompensas com as novas chances
+// Lista das recompensas com as novas chances
 const rewardPool = [
-  // Comuns (54,59% no total → 12 recompensas)
-  // 54,59% / 12 = 4.75% para cada uma
+  // Comuns (54,09% no total → 12 recompensas)
+  // 57% / 12 = 4.75% para cada uma
   { image: "images/23 transformers.png", chance: 4.75 },
   { image: "images/24 Gabriel.png", chance: 4.55 }, 
   { image: "images/25 Kratos.png", chance: 4.75 }, 
-  { image: "images/26 Karma.png", chance: 4.75 }, 
-  { image: "images/28 Mutano.png", chance: 4.05 }, 
-  { image: "images/34 crazy.png", chance: 4.75 }, 
-  { image: "images/35 speak.png", chance: 4.75 },
+  { image: "images/26 Karma.png", chance: 4.85 }, 
+  { image: "images/28 Mutano.png", chance: 4.15 }, 
+  { image: "images/34 crazy.png", chance: 4.55 }, 
+  { image: "images/35 speak.png", chance: 4.15 },
   { image: "images/39 datena.png", chance: 4.75 }, 
   { image: "images/40 galaxia.png", chance: 4.65 }, 
-  { image: "images/36 ariana.png", chance: 4.04 },
-  { image: "images/44 morgan.png", chance: 4.05 },
-  { image: "images/42 syivie.png", chance: 4.75 },
+  { image: "images/36 ariana.png", chance: 4.25 },
+  { image: "images/44 morgan.png", chance: 4.55 },
+  { image: "images/42 syivie.png", chance: 3.95 },
   
 
-  // Incomuns (26,71% no total → 9 recompensas)
-  // 26,71% / 9 = ~2.89% para cada uma
+  // Incomuns (27,69% no total → 9 recompensas)
+  // 26% / 9 = ~2.89% para cada uma
   { image: "images/22 Cartomante.png", chance: 2.89 },
-  { image: "images/27 Steven.png", chance: 2.89 },
+  { image: "images/27 Steven.png", chance: 3.0 },
   { image: "images/29 widow.png", chance: 3.60 }, 
-  { image: "images/30 badice.png", chance: 2.89 }, 
-  { image: "images/32 Engana.png", chance: 2.89 }, 
-  { image: "images/37 clove.png", chance: 2.89 }, 
-  { image: "images/33 deolane.png", chance: 2.89 }, 
-  { image: "images/43 snape.png", chance: 2.89 }, 
-  { image: "images/46 sapatao.png", chance: 2.89 }, 
+  { image: "images/30 badice.png", chance: 3.0 }, 
+  { image: "images/32 Engana.png", chance: 3.1}, 
+  { image: "images/37 clove.png", chance: 3.0 }, 
+  { image: "images/33 deolane.png", chance: 3.0 }, 
+  { image: "images/43 snape.png", chance: 3.0 }, 
+  { image: "images/46 sapatao.png", chance: 3.1 }, 
 
-  // Raras (16,4% no total → 6 recompensas)
-  // 16,4% / 6 = 2.5% para cada uma
-  { image: "images/31 venenoso.png", chance: 2.5 }, 
-  { image: "images/45 shogun.png", chance: 2.5 }, 
+  // Raras (16,22% no total → 6 recompensas)
+  // 15% / 6 = 2.5% para cada uma
+  { image: "images/31 venenoso.png", chance: 2.9 }, 
+  { image: "images/45 shogun.png", chance: 2.62 }, 
   { image: "images/47 galacta.png", chance: 2.5 },
-  { image: "images/48 agatha.png", chance: 3.2 }, 
-  { image: "images/49 yuk.png", chance: 3.2}, 
+  { image: "images/48 agatha.png", chance: 2.8 }, 
+  { image: "images/49 yuk.png", chance: 2.9}, 
   { image: "images/50 magik.png", chance: 2.5}, 
 
-  // Lendárias (1,30% no total → 3 recompensas)
-  // 1,30% / 3 = ~0.33% para cada uma
-  { image: "images/21 Dogou.png", chance: 0.30 }, 
-  { image: "images/38 ravel.png", chance: 0.30 }, 
-  { image: "images/41 loki.png", chance: 0.70 }, // Um pouco mais para somar 1%
+  // Lendárias (2% no total → 3 recompensas)
+  // 1% / 3 = ~0.33% para cada uma
+  { image: "images/21 Dogou.png", chance: 0.55 }, 
+  { image: "images/38 ravel.png", chance: 0.55 }, 
+  { image: "images/41 loki.png", chance: 0.90 }, // Um pouco mais para somar 1%
 ];
-
 // Função para escolher uma recompensa com base na probabilidade
 function getRandomReward() {
   const totalChance = rewardPool.reduce((sum, reward) => sum + reward.chance, 0);
@@ -279,4 +279,5 @@ document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
  
 });
+
 
