@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #333;
   background-size: cover;
-  background-image: url("images/fundo.png");
+  background-image: url("images/fundo.jpg");
   color: white;
   display: flex;
   justify-content: center;
@@ -319,3 +319,46 @@ body {
 .close-button:hover {
   color: rgb(226, 18, 226);
 }
+#btn-specific-card-container {
+  position: fixed;
+  top: 50px; /* Adjust position as needed */
+  left: 15px;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* ... (estilos do btn-show-yuk-card) ... */
+
+/* NOVO: Estilos para o botão Razzle */
+#btn-razzle-card-container {
+  position: fixed;
+  top: 85px; /* Posição abaixo do botão 'Y' */
+  left: 15px;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#btn-show-razzle-card {
+  opacity: 0;
+  padding: 6px 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #28a745; /* Cor verde */
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#btn-razzle-card-container:hover #btn-show-razzle-card {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* FIM DA ADIÇÃO */
+
+
+/* ... (resto do seu CSS continua igual) ... */
