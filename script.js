@@ -25,36 +25,36 @@ imagens.forEach(src => {
 
 // NOVOS NOMES NAS CHAVES (KEYS) DO MAPA DE SONS
 const sounds = {
-  "images/Mahito.png": new Audio("sounds/51.mp3"),
-  "images/Junkrat.png": new Audio("sounds/52.mp3"),
-  "images/Joel.png": new Audio("sounds/53.mp3"),
-  "images/Shiro.png": new Audio("sounds/54.mp3"),
-  "images/Razzle.png": new Audio("sounds/55.mp3"),
-  "images/Apolo.png": new Audio("sounds/56.mp3"),
-  "images/Berry.png": new Audio("sounds/57.mp3"),
-  "images/Gus.png": new Audio("sounds/58.mp3"),
-  "images/Jh.png": new Audio("sounds/59.mp3"),
+  "images/mahito.png": new Audio("sounds/51.mp3"),
+  "images/junkrat.png": new Audio("sounds/52.mp3"),
+  "images/joel.png": new Audio("sounds/53.mp3"),
+  "images/shiro.png": new Audio("sounds/54.mp3"),
+  "images/razzle.png": new Audio("sounds/55.mp3"),
+  "images/apolo.png": new Audio("sounds/56.mp3"),
+  "images/berry.png": new Audio("sounds/57.mp3"),
+  "images/gus.png": new Audio("sounds/58.mp3"),
+  "images/jh.png": new Audio("sounds/59.mp3"),
   "images/NewBofe.png": new Audio("sounds/60.mp3"),
-  "images/Futurista.png": new Audio("sounds/61.mp3"),
-  "images/Espadachim.png": new Audio("sounds/62.mp3"),
-  "images/Juno.png": new Audio("sounds/63.mp3"),
-  "images/Nahida.png": new Audio("sounds/64.mp3"),
-  "images/Mavuika.png": new Audio("sounds/65.mp3"),
-  "images/Furina.png": new Audio("sounds/66.mp3"),
-  "images/Tempestade.png": new Audio("sounds/67.mp3"),
-  "images/Vampira.png": new Audio("sounds/68.mp3"),
-  "images/Xilonen.png": new Audio("sounds/69.mp3"),
-  "images/Rhaenyra.png": new Audio("sounds/70.mp3"),
-  "images/Treta.png": new Audio("sounds/71.mp3"),
-  "images/Emma.png": new Audio("sounds/72.mp3"),
-  "images/Wicked.png": new Audio("sounds/73.mp3"),
-  "images/Fernanda.png": new Audio("sounds/74.mp3"),
-  "images/Alan.png": new Audio("sounds/75.mp3"),
-  "images/Hela.png": new Audio("sounds/76.mp3"),
-  "images/Starboy.png": new Audio("sounds/78.mp3"),
-  "images/Gui.png": new Audio("sounds/79.mp3"),
-  "images/Rolf.png": new Audio("sounds/80.mp3"),
-  "images/Marllus.png": new Audio("sounds/77.mp3"), // Fofoqueiro
+  "images/futurista.png": new Audio("sounds/61.mp3"),
+  "images/espadachim.png": new Audio("sounds/62.mp3"),
+  "images/juno.png": new Audio("sounds/63.mp3"),
+  "images/nahida.png": new Audio("sounds/64.mp3"),
+  "images/mavuika.png": new Audio("sounds/65.mp3"),
+  "images/furina.png": new Audio("sounds/66.mp3"),
+  "images/tempestade.png": new Audio("sounds/67.mp3"),
+  "images/vampira.png": new Audio("sounds/68.mp3"),
+  "images/xilonen.png": new Audio("sounds/69.mp3"),
+  "images/rhaenyra.png": new Audio("sounds/70.mp3"),
+  "images/treta.png": new Audio("sounds/71.mp3"),
+  "images/emma.png": new Audio("sounds/72.mp3"),
+  "images/wicked.png": new Audio("sounds/73.mp3"),
+  "images/fernanda.png": new Audio("sounds/74.mp3"),
+  "images/alan.png": new Audio("sounds/75.mp3"),
+  "images/hela.png": new Audio("sounds/76.mp3"),
+  "images/starboy.png": new Audio("sounds/78.mp3"),
+  "images/gui.png": new Audio("sounds/79.mp3"),
+  "images/rolf.png": new Audio("sounds/80.mp3"),
+  "images/marllus.png": new Audio("sounds/77.mp3"), // Fofoqueiro
 
   // Sons dos botões (mantidos)
   "images/GarraY.png": new Audio("sounds/GarraY.mp3"),
@@ -261,7 +261,7 @@ document.getElementById("btn-show-razzle-card").addEventListener("click", () => 
 
 //Botao de mudar verso
 const versos = [
-  'images/Verso.png',
+  'images/verso.png',
   'images/Verso 2.png',
   'images/Verso3.png',
   'images/Verso 4.png',
@@ -304,4 +304,5 @@ document.getElementById("btn-mudar-fundo").addEventListener("click", () => {
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
  
+
 });
