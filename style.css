@@ -54,7 +54,7 @@ body {
 .card-face.front {
 
   background-size: cover;
-  background-image: url("images/Verso.png");
+  background-image: url("images/verso.png");
   
 }
 
@@ -359,6 +359,7 @@ body {
   pointer-events: auto;
 }
 /* FIM DA ADIÇÃO */
+
 
 
 /* ... (resto do seu CSS continua igual) ... */
