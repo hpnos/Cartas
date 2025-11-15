@@ -54,7 +54,8 @@ const sounds = {
   "images/starboy.png": new Audio("sounds/78.mp3"),
   "images/gui.png": new Audio("sounds/79.mp3"),
   "images/rolf.png": new Audio("sounds/80.mp3"),
-  "images/marllus.png": new Audio("sounds/77.mp3"), // Fofoqueiro
+  "images/marllus.png": new Audio("sounds/77.mp3"),// Fofoqueiro
+  "images/razzledazzle.png": new Audio("sounds/57-botao.mp3"),
 
   // Sons dos botões (mantidos)
   "images/GarraY.png": new Audio("sounds/GarraY.mp3"),
@@ -74,12 +75,12 @@ const rewardPool = [
   // 11 cartas @ 4.58%
   { image: "images/mahito.png", chance: 4.58, fofoca: "Você fica com as duas cartas. Conto pra ninguém." },
   { image: "images/junkrat.png", chance: 4.58, fofoca: "Menina! Não é que foi usada duas bombas?!, escolha 2 números para explodir!" },
-  // { image: "images/Shiro.png", chance: 4.58, fofoca: "Fiquei sabendo que a pessoa que foi anulada levou um time out junto!" }, // IMAGEM NÃO ENCONTRADA
+  { image: "images/sunfire.png", chance: 4.58, fofoca: "Fiquei sabendo que a pessoa que foi anulada levou um time out junto!" }, // IMAGEM NÃO ENCONTRADA
   { image: "images/razzle.png", chance: 4.58, fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },
   { image: "images/berry.png", chance: 4.58, fofoca: "Fiquei sabendo que o Streamer teve q comer um docinho para relaxar e suportar tanto troll nesse jogo" },
   { image: "images/jh.png", chance: 4.58, fofoca: "É mas fiquei sabendo que esse amigo nao ligou pra sua mensagem, eu nao jogaria mais com ele, no lugar da declaração, escolha uma pessoa pra n jogar hoje." },
   { image: "images/nahida.png", chance: 4.58, fofoca: "Essa é capaz de tudo para sentir a energia da natureza, um jogador foi silenciado por falar das plantinhas! Dê um bom Timeout em um Jogador!" },
-  { image: "images/dazzle.png", chance: 4.58, fofoca: "Os fãs adoram essa ai, começaram até usar estáticos dela nas redes sociais! 1 emote pros Subs da Furina disponível." }, // IMAGEM NÃO ENCONTRADA
+  { image: "images/furina.png", chance: 4.58, fofoca: "Os fãs adoram essa ai, começaram até usar estáticos dela nas redes sociais! 1 emote pros Subs da Furina disponível." }, // IMAGEM NÃO ENCONTRADA
   { image: "images/emma.png", chance: 4.58, fofoca: "Se a loja for por sorteio, pegue um papel e jogue fora, aos comandos da rainha." }, // IMAGEM NÃO ENCONTRADA
   // { image: "images/Fernanda.png", chance: 4.58, fofoca: "Ela ainda escolheu uma música que ia tocar na live! Que absurdo!" }, // IMAGEM NÃO ENCONTRADA
   // { image: "images/Alan.png", chance: 4.58, fofoca: "Em outros tempos ele te ensinaria fazer uma poção para rir, aproveitar os stories e vamos de TBT, faça uma piada se for boa tire mais uma carta." }, // IMAGEM NÃO ENCONTRADA
@@ -89,14 +90,14 @@ const rewardPool = [
   // === INCOMUNS (9 Cartas - Total 27%) ===
   // 9 cards @ 3.0%
   { image: "images/joel.png", chance: 3.0, fofoca: "Eu vi ele lutando pra sobreviver, mas tinha algo mais valioso lá. Você pode roubar cartas INCOMUM também." },
-  { image: "images/gus.png", chance: 3.0, fofoca: "Eu vi ele lá com vários fantasmas, tinha para ele e mais alguém, escolha 1 jogador para ser protegido também." },
+  //{ image: "images/gus.png", chance: 3.0, fofoca: "Eu vi ele lá com vários fantasmas, tinha para ele e mais alguém, escolha 1 jogador para ser protegido também." },
   { image: "images/futurista.png", chance: 3.0, fofoca: "Fiquei sabendo que é possível ver um pedaço do futuro daqui! + 10 minutos de live!" },
   { image: "images/espadachim.png", chance: 3.0, fofoca: "Isso é balela, o jogador tem direito nenhum, ele fica sem comprar por 1 dia!" },
   { image: "images/juno.png", chance: 3.0, fofoca: "Essa ai é encrenca! deu um boost de velocidade no aliado e agora além disso, seu aliado possui altas chances de comprar na próxima loja, mesmo q ja tenha comprado, acredita?" },
-  // { image: "images/Mavuika.png", chance: 3.0, fofoca: "" }, // IMAGEM NÃO ENCONTRADA - Fofoca veio em branco
-  // { image: "images/Tempestade.png", chance: 3.0, fofoca: "Levou e levou bonito! Além disso, 3 pessoas não podem comprar cartas com pontos de bot hoje." }, // IMAGEM NÃO ENCONTRADA
+   { image: "images/dazzle.png", chance: 3.0, fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },  //DEVOLVER A MAVUIKA AQUI 
+   { image: "images/tempestade.png", chance: 3.0, fofoca: "Levou e levou bonito! Além disso, 3 pessoas não podem comprar cartas com pontos de bot hoje." }, // IMAGEM NÃO ENCONTRADA
   { image: "images/starboy.png", chance: 3.0, fofoca: "Essa ja foi vilã em uma temporada passada, boatos que mais uma pessoa foi escolhida, só que para não comprar por 1 loja." },
-  // { image: "images/Gui.png", chance: 3.0, fofoca: "Tio Gui está de bom humor hoje, esta carta vale como 2x pro COMBO." }, // IMAGEM NÃO ENCONTRADA
+   { image: "images/gui.png", chance: 3.0, fofoca: "Tio Gui está de bom humor hoje, esta carta vale como 2x pro COMBO." }, // IMAGEM NÃO ENCONTRADA
 
   // === RARAS (6 Cartas - Total 16.5%) ===
   // 6 cards @ 2.75%
@@ -250,11 +251,7 @@ document.getElementById("btn-show-razzle-card").addEventListener("click", () => 
   void modalContent.offsetWidth; // Força o reflow para reiniciar a animação
   modalContent.classList.add("animar");
 
-  // Toca o som para a carta "Razzle.png" se existir
-  if (sounds["images/Razzle.png"]) {
-    sounds["images/Razzle.png"].currentTime = 0;
-    sounds["images/Razzle.png"].play();
-  }
+
 });
 // FIM DA ADIÇÃO
 
@@ -306,4 +303,5 @@ document.getElementById("close-modal").addEventListener("click", () => {
  
 
 });
+
 
