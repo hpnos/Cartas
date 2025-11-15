@@ -97,7 +97,7 @@ const rewardPool = [
    { image: "images/dazzle.png", chance: 3.0, fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },  //DEVOLVER A MAVUIKA AQUI 
    { image: "images/tempestade.png", chance: 3.0, fofoca: "Levou e levou bonito! Além disso, 3 pessoas não podem comprar cartas com pontos de bot hoje." }, // IMAGEM NÃO ENCONTRADA
   { image: "images/starboy.png", chance: 3.0, fofoca: "Essa ja foi vilã em uma temporada passada, boatos que mais uma pessoa foi escolhida, só que para não comprar por 1 loja." },
-   { image: "images/gui.png", chance: 3.0, fofoca: "Tio Gui está de bom humor hoje, esta carta vale como 2x pro COMBO." }, // IMAGEM NÃO ENCONTRADA
+   //{ image: "images/gui.png", chance: 3.0, fofoca: "Tio Gui está de bom humor hoje, esta carta vale como 2x pro COMBO." }, // IMAGEM NÃO ENCONTRADA
 
   // === RARAS (6 Cartas - Total 16.5%) ===
   // 6 cards @ 2.75%
@@ -308,3 +308,4 @@ document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
  
 });
+
