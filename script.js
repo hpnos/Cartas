@@ -28,7 +28,7 @@ const sounds = {
   "images/mahito.png": new Audio("sounds/51.mp3"),
   "images/junkrat.png": new Audio("sounds/52.mp3"),
   "images/joel.png": new Audio("sounds/53.mp3"),
-  "images/shiro.png": new Audio("sounds/54.mp3"),
+  "images/sunfire.png": new Audio("sounds/54.mp3"),
   "images/razzle.png": new Audio("sounds/55.mp3"),
   "images/apolo.png": new Audio("sounds/56.mp3"),
   "images/berry.png": new Audio("sounds/57.mp3"),
@@ -235,23 +235,29 @@ document.getElementById("btn-show-yuk-card").addEventListener("click", () => {
 
 // NOVO: Lógica para o botão de mostrar carta Razzle
 document.getElementById("btn-show-razzle-card").addEventListener("click", () => {
-  const modal = document.getElementById("reward-modal");
-  const rewardImage = document.getElementById("reward-image");
+  const modal = document.getElementById("reward-modal");
+  const rewardImage = document.getElementById("reward-image");
 
-  fofocaContainer.style.display = "none"; // Esconde a fofoca
+  fofocaContainer.style.display = "none"; // Esconde a fofoca
 
-  // Define a imagem específica (Razzle)
-  rewardImage.innerHTML = `<img src="images/razzledazzle.png" alt="Razzle Card">`;
+  // Define a imagem específica (Razzle)
+  rewardImage.innerHTML = `<img src="images/razzledazzle.png" alt="Razzle Card">`;
 
-  // Exibe modal
-  modal.style.display = "flex";
- 
-  // Garante que a animação seja reproduzida a cada clique
-  modalContent.classList.remove("animar");
-  void modalContent.offsetWidth; // Força o reflow para reiniciar a animação
-  modalContent.classList.add("animar");
+  // Exibe modal
+  modal.style.display = "flex";
+ 
+  // Garante que a animação seja reproduzida a cada clique
+  modalContent.classList.remove("animar");
+  void modalContent.offsetWidth; // Força o reflow para reiniciar a animação
+modelContent.classList.add("animar");
 
-
+  // ----- MUDANÇA FEITA AQUI -----
+  // Toca o som "55-botao.mp3" que está associado à chave "images/razzledazzle.png"
+  if (sounds["images/razzledazzle.png"]) {
+    sounds["images/razzledazzle.png"].currentTime = 0;
+    sounds["images/razzledazzle.png"].play();
+  }
+  // ----- FIM DA MUDANÇA -----
 });
 // FIM DA ADIÇÃO
 
@@ -303,6 +309,7 @@ document.getElementById("close-modal").addEventListener("click", () => {
  
 
 });
+
 
 
 
