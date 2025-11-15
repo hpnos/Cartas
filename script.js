@@ -55,7 +55,7 @@ const sounds = {
   "images/gui.png": new Audio("sounds/79.mp3"),
   "images/rolf.png": new Audio("sounds/80.mp3"),
   "images/marllus.png": new Audio("sounds/77.mp3"),// Fofoqueiro
-  "images/razzledazzle.png": new Audio("sounds/57-botao.mp3"),
+  "images/razzledazzle.png": new Audio("sounds/55-botao.mp3"),
 
   // Sons dos botões (mantidos)
   "images/GarraY.png": new Audio("sounds/GarraY.mp3"),
@@ -303,5 +303,6 @@ document.getElementById("close-modal").addEventListener("click", () => {
  
 
 });
+
 
 
