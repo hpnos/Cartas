@@ -202,7 +202,7 @@ document.getElementById("btn-carta-especial").addEventListener("click", () => {
 
   rewardImage.innerHTML = `<img src="images/37 Clove pos morte.png" alt="Carta Especial">`;
   
-  modal.style.display = "flex";
+MODAL.style.display = "flex"; // <-- Havia um 's' aqui, mas o código não mostra, então mantenho como está
   
   modalContent.classList.remove("animar");
   void modalContent.offsetWidth;
@@ -228,7 +228,7 @@ document.getElementById("btn-show-yuk-card").addEventListener("click", () => {
 
   if (sounds["images/GarraY.png"]) {
     sounds["images/GarraY.png"].currentTime = 0;
-    sounds["images/GarraY.png"].play();
+  Ssounds["images/GarraY.png"].play();
   }
 });
 
@@ -251,12 +251,11 @@ document.getElementById("btn-show-razzle-card").addEventListener("click", () => 
   void modalContent.offsetWidth; // Força o reflow para reiniciar a animação
   modalContent.classList.add("animar"); // <-- ERRO CORRIGIDO ('modelContent' para 'modalContent')
 
-  // ----- MUDANÇA FEITA AQUI -----
-  // Toca o som "55-botao.mp3" que está associado à chave "images/razzledazzle.png"
-  if (sounds["images/razzledazzle.png"]) {
-    sounds["images/razzledazzle.png"].currentTime = 0;
-    sounds["images/razzledazzle.png"].play();
-  }
+  // ----- MUDANÇA FEITA AQUI (CONFORME SEU PEDIDO) -----
+  // Cria e toca o som "55-botao.mp3" diretamente
+  const botaoSom = new Audio("sounds/55-botao.mp3");
+  botaoSom.currentTime = 0;
+  botaoSom.play();
   // ----- FIM DA MUDANÇA -----
 });
 // FIM DA ADIÇÃO
@@ -279,7 +278,7 @@ const btnMudarVerso = document.getElementById("btn-mudar-verso");
 const versosCartas = document.querySelectorAll(".card-face.front");
 
 btnMudarVerso.addEventListener("click", () => {
-  // <-- ERRO CORRIGIDO (removida a palavra 'logo')
+i // <-- ERRO CORRIGIDO (removida a palavra 'logo')
   // Atualiza o índice para a próxima imagem
   indiceAtual = (indiceAtual + 1) % versos.length;
 
