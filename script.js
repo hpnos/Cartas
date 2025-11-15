@@ -171,7 +171,7 @@ for (let i = 0; i < 20; i++) {
         fofocaContainer.style.display = "block"; 
         proximaCartaTemFofoca = false; 
       } else {
-        fofocaContainer.style.display = "none"; // <-- CORREÇÃO 1: Removido o "s" daqui
+        fofocaContainer.style.display = "none"; // <-- ERRO CORRIGIDO (removido 's')
       }
 
       if (reward.isFofoqueiro) {
@@ -183,7 +183,7 @@ for (let i = 0; i < 20; i++) {
       document.getElementById("reward-modal").style.display = "flex";
       
       modalContent.classList.remove("animar");
-      void modalContent.offsetWidth; // <-- CORREÇÃO 2: Removido o "s" daqui
+      void modalContent.offsetWidth; // <-- ERRO CORRIGIDO (removido 's')
       modalContent.classList.add("animar");
 
       playSound(reward.image);
@@ -201,7 +201,7 @@ document.getElementById("btn-carta-especial").addEventListener("click", () => {
   fofocaContainer.style.display = "none"; 
 
   rewardImage.innerHTML = `<img src="images/37 Clove pos morte.png" alt="Carta Especial">`;
- s
+  
   modal.style.display = "flex";
   
   modalContent.classList.remove("animar");
@@ -233,7 +233,7 @@ document.getElementById("btn-show-yuk-card").addEventListener("click", () => {
 });
 
 
-// Lógica para o botão de mostrar carta Razzle
+// NOVO: Lógica para o botão de mostrar carta Razzle
 document.getElementById("btn-show-razzle-card").addEventListener("click", () => {
   const modal = document.getElementById("reward-modal");
   const rewardImage = document.getElementById("reward-image");
@@ -249,13 +249,15 @@ document.getElementById("btn-show-razzle-card").addEventListener("click", () => 
   // Garante que a animação seja reproduzida a cada clique
   modalContent.classList.remove("animar");
   void modalContent.offsetWidth; // Força o reflow para reiniciar a animação
-  modalContent.classList.add("animar"); // <-- CORREÇÃO 3: Corrigido "modelContent" para "modalContent"
+  modalContent.classList.add("animar"); // <-- ERRO CORRIGIDO ('modelContent' para 'modalContent')
 
+  // ----- MUDANÇA FEITA AQUI -----
   // Toca o som "55-botao.mp3" que está associado à chave "images/razzledazzle.png"
   if (sounds["images/razzledazzle.png"]) {
     sounds["images/razzledazzle.png"].currentTime = 0;
     sounds["images/razzledazzle.png"].play();
   }
+  // ----- FIM DA MUDANÇA -----
 });
 // FIM DA ADIÇÃO
 
@@ -277,7 +279,7 @@ const btnMudarVerso = document.getElementById("btn-mudar-verso");
 const versosCartas = document.querySelectorAll(".card-face.front");
 
 btnMudarVerso.addEventListener("click", () => {
-  // <-- CORREÇÃO 4: Removida a palavra "logo" daqui
+  // <-- ERRO CORRIGIDO (removida a palavra 'logo')
   // Atualiza o índice para a próxima imagem
   indiceAtual = (indiceAtual + 1) % versos.length;
 
