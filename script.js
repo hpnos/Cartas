@@ -67,9 +67,7 @@ function playSound(image) {
   }
 }
 
-// ==========================================================
-// REWARD POOL (Mantido exatamente como o seu)
-// ==========================================================
+
 const rewardPool = [
   // === COMUNS (12 Cartas - Total 55%) ===
   // 11 cartas @ 4.58%
@@ -114,9 +112,6 @@ const rewardPool = [
   { image: "images/Rhaenyra.png", chance: 0.5, fofoca: "Syrax veio acompanhado da rainha! \n\tSyrax - RIVALIDADE: Dracarys! é o fim, queimou até a morte, escolha alguém para não participar mais do evento.(mas ela ganha as cartas físicas que restou na carteira independente de número)." }, // IMAGEM NÃO ENCONTRADA
   // { image: "images/Rolf.png", chance: 0.5, fofoca: "Ou você pode pedir pro Streamer fazer 1 skin de uma carta de temporadas passadas do tema SI-FI ou Medieval, você ganha a carta." } // IMAGEM NÃO ENCONTRADA
 ];
-// ==========================================================
-// FIM DO REWARD POOL
-// ==========================================================
 
 
 function getRandomReward() {
@@ -171,7 +166,7 @@ for (let i = 0; i < 20; i++) {
         fofocaContainer.style.display = "block"; 
         proximaCartaTemFofoca = false; 
       } else {
-        fofocaContainer.style.display = "none"; // <-- ERRO CORRIGIDO (removido 's')
+        fofocaContainer.style.display = "none"; 
       }
 
       if (reward.isFofoqueiro) {
@@ -183,7 +178,7 @@ for (let i = 0; i < 20; i++) {
       document.getElementById("reward-modal").style.display = "flex";
       
       modalContent.classList.remove("animar");
-      void modalContent.offsetWidth; // <-- ERRO CORRIGIDO (removido 's')
+      void modalContent.offsetWidth; 
       modalContent.classList.add("animar");
 
       playSound(reward.image);
@@ -202,7 +197,7 @@ document.getElementById("btn-carta-especial").addEventListener("click", () => {
 
   rewardImage.innerHTML = `<img src="images/37 Clove pos morte.png" alt="Carta Especial">`;
   
-MODAL.style.display = "flex"; // <-- Havia um 's' aqui, mas o código não mostra, então mantenho como está
+MODAL.style.display = "flex"; 
   
   modalContent.classList.remove("animar");
   void modalContent.offsetWidth;
@@ -249,9 +244,9 @@ document.getElementById("btn-show-razzle-card").addEventListener("click", () => 
   // Garante que a animação seja reproduzida a cada clique
   modalContent.classList.remove("animar");
   void modalContent.offsetWidth; // Força o reflow para reiniciar a animação
-  modalContent.classList.add("animar"); // <-- ERRO CORRIGIDO ('modelContent' para 'modalContent')
+  modalContent.classList.add("animar"); 
 
-  // ----- MUDANÇA FEITA AQUI (CONFORME SEU PEDIDO) -----
+
   // Cria e toca o som "55-botao.mp3" diretamente
   const botaoSom = new Audio("sounds/55-botao.mp3");
   botaoSom.currentTime = 0;
@@ -278,7 +273,7 @@ const btnMudarVerso = document.getElementById("btn-mudar-verso");
 const versosCartas = document.querySelectorAll(".card-face.front");
 
 btnMudarVerso.addEventListener("click", () => {
-i // <-- ERRO CORRIGIDO (removida a palavra 'logo')
+i
   // Atualiza o índice para a próxima imagem
   indiceAtual = (indiceAtual + 1) % versos.length;
 
@@ -308,6 +303,7 @@ document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
  
 });
+
 
 
 
