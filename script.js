@@ -256,7 +256,7 @@ document.getElementById("btn-show-telefone").addEventListener("click", () => {
   void modalContent.offsetWidth; 
   modalContent.classList.add("animar");
 
-  const somTelefone = new Audio("sounds/ligacao.mp3");
+  const somTelefone = new Audio("sounds/Ligacao.mp3");
   tocarSomGerenciado(somTelefone);
 });
 
@@ -307,5 +307,6 @@ btnMudarVerso.addEventListener("click", () => {
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
 });
+
 
 
