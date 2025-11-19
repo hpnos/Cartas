@@ -246,7 +246,7 @@ document.getElementById("btn-show-telefone").addEventListener("click", () => {
   fofocaContainer.style.display = "none"; 
 
   // Define a imagem do telefone
-  rewardImage.innerHTML = `<img src="images/telefone.png" alt="Telefone">`;
+  rewardImage.innerHTML = `<img src="images/Telefone.png" alt="Telefone">`;
 
   // Exibe modal
   modal.style.display = "flex";
@@ -315,3 +315,4 @@ btnMudarVerso.addEventListener("click", () => {
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
 });
+
