@@ -73,7 +73,7 @@ const sounds = {
   "images/espadachim.png": new Audio("sounds/62.mp3"),
   "images/juno.png": new Audio("sounds/63.mp3"),
   "images/nahida.png": new Audio("sounds/64.mp3"),
-  "images/dazzle.png": new Audio("sounds/65.mp3"), 
+  "images/dazzle.png": new Audio("sounds/55.mp3"), 
   "images/furina.png": new Audio("sounds/66.mp3"),
   "images/tempestade.png": new Audio("sounds/67.mp3"),
   "images/vampira.png": new Audio("sounds/68.mp3"),
@@ -307,4 +307,5 @@ btnMudarVerso.addEventListener("click", () => {
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
 });
+
 
