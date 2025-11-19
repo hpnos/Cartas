@@ -1,3 +1,19 @@
+// ------------------------------------------------------------------
+// CONFIGURAÇÃO DE VOLUME
+// ------------------------------------------------------------------
+const volumeSlider = document.getElementById("volume-slider");
+let volumeGlobal = parseFloat(volumeSlider.value); // Começa com o valor do HTML (0.5)
+
+// Atualiza o volume quando o slider mexe
+volumeSlider.addEventListener("input", (e) => {
+  volumeGlobal = parseFloat(e.target.value);
+  // Se tiver algo tocando agora, ajusta o volume em tempo real
+  if (audioAtual) {
+    audioAtual.volume = volumeGlobal;
+  }
+});
+// ------------------------------------------------------------------
+
 // Variável para controlar o som que está tocando atualmente
 let audioAtual = null;
 
@@ -9,30 +25,30 @@ function tocarSomGerenciado(novoAudio) {
     audioAtual.currentTime = 0;
   }
 
-  // Define o novo som como o atual e toca
+  // Define o novo som como o atual
   audioAtual = novoAudio;
+  
+  // APLICA O VOLUME DEFINIDO NO SLIDER
+  audioAtual.volume = volumeGlobal;
+
   audioAtual.play().catch(error => console.log("Erro ao reproduzir áudio:", error));
 }
 
-// Sons para cada raridade
+// LISTA DE IMAGENS
 const imagens = [
-  // NOVOS NOMES DE IMAGENS
-  "images/Mahito.png", "images/Junkrat.png", "images/Joel.png", "images/Shiro.png",
-  "images/Razzle.png", "images/Apolo.png", "images/Berry.png", "images/Gus.png",
-  "images/Jh.png", "images/NewBofe.png", "images/Futurista.png", "images/Espadachim.png",
-  "images/Juno.png", "images/Nahida.png", "images/Mavuika.png", "images/Furina.png",
-  "images/Tempestade.png", "images/Vampira.png", "images/Xilonen.png", "images/Rhaenyra.png",
-  "images/Treta.png", "images/Emma.png", "images/Wicked.png", "images/Fernanda.png",
-  "images/Alan.png", "images/Hela.png", "images/Marllus.png", "images/Starboy.png",
-  "images/Gui.png", "images/Rolf.png",
+  "images/mahito.png", "images/junkrat.png", "images/joel.png", "images/sunfire.png",
+  "images/razzle.png", "images/apolo.png", "images/berry.png", "images/gus.png",
+  "images/jh.png", "images/NewBofe.png", "images/futurista.png", "images/espadachim.png",
+  "images/juno.png", "images/nahida.png", "images/dazzle.png", "images/furina.png",
+  "images/tempestade.png", "images/vampira.png", "images/xilonen.png", "images/rhaenyra.png",
+  "images/treta.png", "images/emma.png", "images/wicked.png", "images/fernanda.png",
+  "images/alan.png", "images/hela.png", "images/marllus.png", "images/starboy.png",
+  "images/gui.png", "images/rolf.png",
   
-  // Imagens dos botões e versos
+  // Imagens extras
   "images/GarraY.png",
-  "images/Verso.png",
-  "images/Verso 2.png",
-  "images/Verso3.png",
-  "images/telefone.png",
-  "images/secreta1.png" 
+  "images/verso.png", "images/Verso 2.png", "images/Verso3.png",
+  "images/telefone.png", "images/secreta1.png", "images/razzledazzle.png"
 ];
 
 // Pré-carregamento
@@ -41,12 +57,12 @@ imagens.forEach(src => {
   img.src = src;
 });
 
-// MAPA DE SONS (Pre-carregados)
+// MAPA DE SONS
 const sounds = {
   "images/mahito.png": new Audio("sounds/51.mp3"),
   "images/junkrat.png": new Audio("sounds/52.mp3"),
   "images/joel.png": new Audio("sounds/53.mp3"),
-  "images/sunfire.png": new Audio("sounds/54.mp3"),
+  "images/sunfire.png": new Audio("sounds/54.mp3"), 
   "images/razzle.png": new Audio("sounds/55.mp3"),
   "images/apolo.png": new Audio("sounds/56.mp3"),
   "images/berry.png": new Audio("sounds/57.mp3"),
@@ -57,7 +73,7 @@ const sounds = {
   "images/espadachim.png": new Audio("sounds/62.mp3"),
   "images/juno.png": new Audio("sounds/63.mp3"),
   "images/nahida.png": new Audio("sounds/64.mp3"),
-  "images/mavuika.png": new Audio("sounds/65.mp3"),
+  "images/dazzle.png": new Audio("sounds/65.mp3"), 
   "images/furina.png": new Audio("sounds/66.mp3"),
   "images/tempestade.png": new Audio("sounds/67.mp3"),
   "images/vampira.png": new Audio("sounds/68.mp3"),
@@ -73,13 +89,14 @@ const sounds = {
   "images/gui.png": new Audio("sounds/79.mp3"),
   "images/rolf.png": new Audio("sounds/80.mp3"),
   "images/marllus.png": new Audio("sounds/77.mp3"),
+  
+  // Extras
   "images/razzledazzle.png": new Audio("sounds/55-botao.mp3"),
   "images/GarraY.png": new Audio("sounds/GarraY.mp3"),
 };
 
 // Função antiga atualizada para usar o gerenciador
 function playSound(image) {
-  // Verifica se existe som mapeado para essa imagem
   if (sounds[image]) {
     tocarSomGerenciado(sounds[image]);
   }
@@ -89,54 +106,51 @@ function playSound(image) {
 // REWARD POOL
 // ==========================================================
 const rewardPool = [
-  // === COMUNS (12 Cartas - Total 55%) ===
-  // 11 cartas @ 4.58%
-  { image: "images/mahito.png", chance: 4.58, fofoca: "Você fica com as duas cartas. Conto pra ninguém." },
-  { image: "images/junkrat.png", chance: 4.58, fofoca: "Menina! Não é que foi usada duas bombas?!, escolha 2 números para explodir!" },
-  { image: "images/sunfire.png", chance: 4.58, fofoca: "Fiquei sabendo que a pessoa que foi anulada levou um time out junto!" }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/razzle.png", chance: 4.58, fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },
-  { image: "images/berry.png", chance: 4.58, fofoca: "Fiquei sabendo que o Streamer teve q comer um docinho para relaxar e suportar tanto troll nesse jogo" },
-  { image: "images/jh.png", chance: 4.58, fofoca: "É mas fiquei sabendo que esse amigo nao ligou pra sua mensagem, eu nao jogaria mais com ele, no lugar da declaração, escolha uma pessoa pra n jogar hoje." },
-  { image: "images/nahida.png", chance: 4.58, fofoca: "Essa é capaz de tudo para sentir a energia da natureza, um jogador foi silenciado por falar das plantinhas! Dê um bom Timeout em um Jogador!" },
-  { image: "images/furina.png", chance: 4.58, fofoca: "Os fãs adoram essa ai, começaram até usar estáticos dela nas redes sociais! 1 emote pros Subs da Furina disponível." }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/emma.png", chance: 4.58, fofoca: "Se a loja for por sorteio, pegue um papel e jogue fora, aos comandos da rainha." }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/fernanda.png", chance: 4.58, fofoca: "Ela ainda escolheu uma música que ia tocar na live! Que absurdo!" }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/alan.png", chance: 4.58, fofoca: "Em outros tempos ele te ensinaria fazer uma poção para rir, aproveitar os stories e vamos de TBT, faça uma piada se for boa tire mais uma carta." }, // IMAGEM NÃO ENCONTRADA
-  // 1 carta @ 4.62% (para somar 55%)
-  { image: "images/marllus.png", chance: 4.62, isFofoqueiro: true, fofoca: "Psiu! Uma carta secreta foi adicionada ao jogo!" },
+  // === COMUNS (12 Cartas - Total 55%) ===
+  // 11 cartas @ 4.58%
+  { image: "images/mahito.png", chance: 4.58, fofoca: "Você fica com as duas cartas. Conto pra ninguém." },
+  { image: "images/junkrat.png", chance: 4.58, fofoca: "Menina! Não é que foi usada duas bombas?!, escolha 2 números para explodir!" },
+  { image: "images/sunfire.png", chance: 4.58, fofoca: "Fiquei sabendo que a pessoa que foi anulada levou um time out junto!" }, // IMAGEM NÃO ENCONTRADA
+  { image: "images/razzle.png", chance: 4.58, fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },
+  { image: "images/berry.png", chance: 4.58, fofoca: "Fiquei sabendo que o Streamer teve q comer um docinho para relaxar e suportar tanto troll nesse jogo" },
+  { image: "images/jh.png", chance: 4.58, fofoca: "É mas fiquei sabendo que esse amigo nao ligou pra sua mensagem, eu nao jogaria mais com ele, no lugar da declaração, escolha uma pessoa pra n jogar hoje." },
+  { image: "images/nahida.png", chance: 4.58, fofoca: "Essa é capaz de tudo para sentir a energia da natureza, um jogador foi silenciado por falar das plantinhas! Dê um bom Timeout em um Jogador!" },
+  { image: "images/furina.png", chance: 4.58, fofoca: "Os fãs adoram essa ai, começaram até usar estáticos dela nas redes sociais! 1 emote pros Subs da Furina disponível." }, // IMAGEM NÃO ENCONTRADA
+  { image: "images/emma.png", chance: 4.58, fofoca: "Se a loja for por sorteio, pegue um papel e jogue fora, aos comandos da rainha." }, // IMAGEM NÃO ENCONTRADA
+  { image: "images/fernanda.png", chance: 4.58, fofoca: "Ela ainda escolheu uma música que ia tocar na live! Que absurdo!" }, // IMAGEM NÃO ENCONTRADA
+  { image: "images/alan.png", chance: 4.58, fofoca: "Em outros tempos ele te ensinaria fazer uma poção para rir, aproveitar os stories e vamos de TBT, faça uma piada se for boa tire mais uma carta." }, // IMAGEM NÃO ENCONTRADA
+  // 1 carta @ 4.62% (para somar 55%)
+  { image: "images/marllus.png", chance: 4.62, isFofoqueiro: true, fofoca: "Psiu! Uma carta secreta foi adicionada ao jogo!" },
 
-  // === INCOMUNS (9 Cartas - Total 27%) ===
-  // 9 cards @ 3.0%
-  { image: "images/joel.png", chance: 3.0, fofoca: "Eu vi ele lutando pra sobreviver, mas tinha algo mais valioso lá. Você pode roubar cartas INCOMUM também." },
-  { image: "images/gus.png", chance: 3.0, fofoca: "Eu vi ele lá com vários fantasmas, tinha para ele e mais alguém, escolha 1 jogador para ser protegido também." },
-  { image: "images/futurista.png", chance: 3.0, fofoca: "Fiquei sabendo que é possível ver um pedaço do futuro daqui! + 10 minutos de live!" },
-  { image: "images/espadachim.png", chance: 3.0, fofoca: "Isso é balela, o jogador tem direito nenhum, ele fica sem comprar por 1 dia!" },
-  { image: "images/juno.png", chance: 3.0, fofoca: "Essa ai é encrenca! deu um boost de velocidade no aliado e agora além disso, seu aliado possui altas chances de comprar na próxima loja, mesmo q ja tenha comprado, acredita?" },
-   { image: "images/dazzle.png", chance: 3.0, fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },  //DEVOLVER A MAVUIKA AQUI 
-   { image: "images/tempestade.png", chance: 3.0, fofoca: "Levou e levou bonito! Além disso, 3 pessoas não podem comprar cartas com pontos de bot hoje." }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/starboy.png", chance: 3.0, fofoca: "Essa ja foi vilã em uma temporada passada, boatos que mais uma pessoa foi escolhida, só que para não comprar por 1 loja." },
-  { image: "images/gui.png", chance: 3.0, fofoca: "Tio Gui está de bom humor hoje, esta carta vale como 2x pro COMBO." }, // IMAGEM NÃO ENCONTRADA
+  // === INCOMUNS (9 Cartas - Total 27%) ===
+  // 9 cards @ 3.0%
+  { image: "images/joel.png", chance: 3.0, fofoca: "Eu vi ele lutando pra sobreviver, mas tinha algo mais valioso lá. Você pode roubar cartas INCOMUM também." },
+  { image: "images/gus.png", chance: 3.0, fofoca: "Eu vi ele lá com vários fantasmas, tinha para ele e mais alguém, escolha 1 jogador para ser protegido também." },
+  { image: "images/futurista.png", chance: 3.0, fofoca: "Fiquei sabendo que é possível ver um pedaço do futuro daqui! + 10 minutos de live!" },
+  { image: "images/espadachim.png", chance: 3.0, fofoca: "Isso é balela, o jogador tem direito nenhum, ele fica sem comprar por 1 dia!" },
+  { image: "images/juno.png", chance: 3.0, fofoca: "Essa ai é encrenca! deu um boost de velocidade no aliado e agora além disso, seu aliado possui altas chances de comprar na próxima loja, mesmo q ja tenha comprado, acredita?" },
+   { image: "images/dazzle.png", chance: 3.0, fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },  
+   { image: "images/tempestade.png", chance: 3.0, fofoca: "Levou e levou bonito! Além disso, 3 pessoas não podem comprar cartas com pontos de bot hoje." }, // IMAGEM NÃO ENCONTRADA
+  { image: "images/starboy.png", chance: 3.0, fofoca: "Essa ja foi vilã em uma temporada passada, boatos que mais uma pessoa foi escolhida, só que para não comprar por 1 loja." },
+  { image: "images/gui.png", chance: 3.0, fofoca: "Tio Gui está de bom humor hoje, esta carta vale como 2x pro COMBO." }, // IMAGEM NÃO ENCONTRADA
 
-  // === RARAS (6 Cartas - Total 16.5%) ===
-  // 6 cards @ 2.75%
-  { image: "images/apolo.png", chance: 2.75, fofoca: "Ela foi la, falou com o Streamer e ainda ganhou 1 carta de graça!" },
-  { image: "images/vampira.png", chance: 2.75, fofoca: "O Roubo prejudicou muito o usuario que ele morreu, a carta q vc roubou o texto sai da coleção do jogador mas não vai para a sua." },
-  // { image: "images/Xilonen.png", chance: 2.75, fofoca: "Fiquei sabendo que independente da música que estiver tocando, alguem ai não curtiu o som e fica sem comprar cartas por 1 dia." }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/treta.png", chance: 2.75, fofoca: "Você ganha 3 pontos de vantagem na categoria que escolher!" },
-  // { image: "images/Wicked.png", chance: 2.75, fofoca: "Elas estão em alta menina, Versos das cartas temáticos até o final da live." }, // IMAGEM NÃO ENCONTRADA
-  // { image: "images/Hela.png", chance: 2.75, fofoca: "Uma dica oculta revelada foi adicionada aos feitiços." }, // IMAGEM NÃO ENCONTRADA
+  // === RARAS (6 Cartas - Total 16.5%) ===
+  // 6 cards @ 2.75%
+  { image: "images/apolo.png", chance: 2.75, fofoca: "Ela foi la, falou com o Streamer e ainda ganhou 1 carta de graça!" },
+  { image: "images/vampira.png", chance: 2.75, fofoca: "O Roubo prejudicou muito o usuario que ele morreu, a carta q vc roubou o texto sai da coleção do jogador mas não vai para a sua." },
+  // { image: "images/Xilonen.png", chance: 2.75, fofoca: "Fiquei sabendo que independente da música que estiver tocando, alguem ai não curtiu o som e fica sem comprar cartas por 1 dia." }, // IMAGEM NÃO ENCONTRADA
+  { image: "images/treta.png", chance: 2.75, fofoca: "Você ganha 3 pontos de vantagem na categoria que escolher!" },
+  // { image: "images/Wicked.png", chance: 2.75, fofoca: "Elas estão em alta menina, Versos das cartas temáticos até o final da live." }, // IMAGEM NÃO ENCONTRADA
+  // { image: "images/Hela.png", chance: 2.75, fofoca: "Uma dica oculta revelada foi adicionada aos feitiços." }, // IMAGEM NÃO ENCONTRADA
 
-  // === LENDÁRIAS (3 Cartas - Total 1.5%) ===
-  // 3 cards @ 0.5%
-  { image: "images/NewBofe.png", chance: 0.5, fofoca: "Tava linda as anotações, eu vi até um adesivo no meio! Ta certo?! Vc ganha um adesivo junto." },
-  { image: "images/rhaenyra.png", chance: 0.5, fofoca: "Syrax veio acompanhado da rainha! \n\tSyrax - RIVALIDADE: Dracarys! é o fim, queimou até a morte, escolha alguém para não participar mais do evento.(mas ela ganha as cartas físicas que restou na carteira independente de número)." }, // IMAGEM NÃO ENCONTRADA
-  // { image: "images/Rolf.png", chance: 0.5, fofoca: "Ou você pode pedir pro Streamer fazer 1 skin de uma carta de temporadas passadas do tema SI-FI ou Medieval, você ganha a carta." } // IMAGEM NÃO ENCONTRADA
+  // === LENDÁRIAS (3 Cartas - Total 1.5%) ===
+  // 3 cards @ 0.5%
+  { image: "images/NewBofe.png", chance: 0.5, fofoca: "Tava linda as anotações, eu vi até um adesivo no meio! Ta certo?! Vc ganha um adesivo junto." },
+  { image: "images/rhaenyra.png", chance: 0.5, fofoca: "Syrax veio acompanhado da rainha! \n\tSyrax - RIVALIDADE: Dracarys! é o fim, queimou até a morte, escolha alguém para não participar mais do evento.(mas ela ganha as cartas físicas que restou na carteira independente de número)." }, // IMAGEM NÃO ENCONTRADA
+  // { image: "images/Rolf.png", chance: 0.5, fofoca: "Ou você pode pedir pro Streamer fazer 1 skin de uma carta de temporadas passadas do tema SI-FI ou Medieval, você ganha a carta." } // IMAGEM NÃO ENCONTRADA
 ];
-// ==========================================================
-// FIM DO REWARD POOL
-// ==========================================================
 
-
+// Função de Sorteio
 function getRandomReward() {
   const totalChance = rewardPool.reduce((sum, reward) => sum + reward.chance, 0);
   let random = Math.random() * totalChance;
@@ -204,7 +218,7 @@ for (let i = 0; i < 20; i++) {
       void modalContent.offsetWidth;
       modalContent.classList.add("animar");
 
-      // Toca o som usando o gerenciador
+      // Toca o som usando o gerenciador (aplica volume e corta o anterior)
       playSound(reward.image);
     }, 400);
   });
@@ -212,74 +226,52 @@ for (let i = 0; i < 20; i++) {
   gameBoard.appendChild(card);
 }
 
-// -------------------------------------------------
-// BOTÕES ESPECIAIS (Todos atualizados com tocarSomGerenciado)
-// -------------------------------------------------
+// --- BOTÕES ESPECIAIS ---
 
-// Lógica para o botão RAZZLE
+// Botão RAZZLE (R)
 document.getElementById("btn-show-razzle-card").addEventListener("click", () => {
   const modal = document.getElementById("reward-modal");
   const rewardImage = document.getElementById("reward-image");
-
   fofocaContainer.style.display = "none"; 
 
-  // Define a imagem específica (Razzle)
   rewardImage.innerHTML = `<img src="images/razzledazzle.png" alt="Razzle Card">`;
-
-  // Exibe modal
   modal.style.display = "flex";
- 
   modalContent.classList.remove("animar");
   void modalContent.offsetWidth; 
   modalContent.classList.add("animar");
 
-  // Cria e toca o som com o gerenciador
   const botaoSom = new Audio("sounds/55-botao.mp3");
   tocarSomGerenciado(botaoSom);
 });
 
-// Lógica para o botão TELEFONE
+// Botão TELEFONE (T)
 document.getElementById("btn-show-telefone").addEventListener("click", () => {
   const modal = document.getElementById("reward-modal");
   const rewardImage = document.getElementById("reward-image");
-
   fofocaContainer.style.display = "none"; 
 
-  // Define a imagem do telefone
-  rewardImage.innerHTML = `<img src="images/Telefone.png" alt="Telefone">`;
-
-  // Exibe modal
+  rewardImage.innerHTML = `<img src="images/telefone.png" alt="Telefone">`;
   modal.style.display = "flex";
- 
-  // Reinicia animação
   modalContent.classList.remove("animar");
   void modalContent.offsetWidth; 
   modalContent.classList.add("animar");
 
-  // Cria e toca o som com o gerenciador
   const somTelefone = new Audio("sounds/ligacao.mp3");
   tocarSomGerenciado(somTelefone);
 });
 
-// Lógica para o botão SECRETA 1
+// Botão SECRETA 1 (S1)
 document.getElementById("btn-show-secreta1").addEventListener("click", () => {
   const modal = document.getElementById("reward-modal");
   const rewardImage = document.getElementById("reward-image");
-
   fofocaContainer.style.display = "none"; 
 
-  // Define a imagem da secreta1
   rewardImage.innerHTML = `<img src="images/secreta1.png" alt="Secreta 1">`;
-
-  // Exibe modal
   modal.style.display = "flex";
- 
-  // Reinicia animação
   modalContent.classList.remove("animar");
   void modalContent.offsetWidth; 
   modalContent.classList.add("animar");
 
-  // Cria e toca o som com o gerenciador
   const somSecreta = new Audio("sounds/secreta1.mp3");
   tocarSomGerenciado(somSecreta);
 });
@@ -315,4 +307,3 @@ btnMudarVerso.addEventListener("click", () => {
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
 });
-
