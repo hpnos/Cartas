@@ -172,7 +172,7 @@ const fofocaContainer = document.getElementById("fofoca-container");
 const fofocaText = document.getElementById("fofoca-text");
 
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 24; i++) {
   const card = document.createElement("div");
   card.classList.add("card");
   const cardInner = document.createElement("div");
@@ -307,6 +307,7 @@ btnMudarVerso.addEventListener("click", () => {
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
 });
+
 
 
 
