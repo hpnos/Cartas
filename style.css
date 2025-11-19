@@ -28,6 +28,7 @@ body {
   width:148px;
   height: 207px;
   perspective: 1000px; /* Necessário para o efeito de rotação */
+  position: relative;
 }
 
 .card-inner {
@@ -36,6 +37,8 @@ body {
   position: relative;
   transform-style: preserve-3d; /* Permite a rotação 3D */
   transition: transform 0.6s ease-out; /* Faz a animação suave */
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .card-inner.flipped {
@@ -52,10 +55,8 @@ body {
 }
 
 .card-face.front {
-
   background-size: cover;
   background-image: url("images/verso.png");
-  
 }
 
 .card-face.back {
@@ -78,20 +79,15 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro */
-
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
 .modal-content {
-
-  
-  position: relative; /* já está para conter o absolute */
+  position: relative; 
   overflow: hidden;
   z-index: 1;
-
-
 }
 
 #reward-message {
@@ -106,14 +102,13 @@ body {
   border-radius: 30px;
 }
 
+/* --- BOTÕES DE MENU --- */
 
-
-/* botao que muda o verso */
-
+/* Botão Mudar Verso (Mantido) */
 #btn-mudar-verso-container {
   position: fixed;
   top: 15px;
-  left: 60px;  
+  left: 85px; /* Movido um pouco para a direita para não colar no botão R */
   width: 120px;
   height: 40px;
   cursor: pointer;
@@ -131,8 +126,6 @@ body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
   transition: opacity 0.3s ease;
   pointer-events: none;
-  
-  
 }
 
 #btn-mudar-verso-container:hover #btn-mudar-verso {
@@ -140,26 +133,23 @@ body {
   pointer-events: auto;
 }
 
-
-/* ... (existing styles) ... */
-
-/* New button for specific card */
-#btn-specific-card-container {
+/* Botão RAZZLE (R) - Cor Verde - Posição Topo */
+#btn-razzle-card-container {
   position: fixed;
-  top: 50px; /* Adjust position as needed */
+  top: 15px; 
   left: 15px;
   width: 60px;
   height: 30px;
   cursor: pointer;
 }
 
-#btn-show-yuk-card {
+#btn-show-razzle-card {
   opacity: 0;
   padding: 6px 12px;
   font-size: 12px;
   border: none;
   border-radius: 6px;
-  background-color: #ff8c00; /* Example color */
+  background-color: #28a745; 
   color: white;
   cursor: pointer;
   box-shadow: 0 1px 1px rgba(0,0,0,0.3);
@@ -167,22 +157,84 @@ body {
   pointer-events: none;
 }
 
-#btn-specific-card-container:hover #btn-show-yuk-card {
+#btn-razzle-card-container:hover #btn-show-razzle-card {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* ... (rest of your styles) ... */
-
-#btn-container {
+/* Botão TELEFONE (T) - Cor Azul - Abaixo do R */
+#btn-telefone-container {
   position: fixed;
-  top: 15px;
-  left: 15px;  
-  width: 120px;
-  height: 40px;
+  top: 50px; 
+  left: 15px;
+  width: 60px;
+  height: 30px;
   cursor: pointer;
 }
 
+#btn-show-telefone {
+  opacity: 0;
+  padding: 6px 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#btn-telefone-container:hover #btn-show-telefone {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Botão SECRETA 1 (S1) - Cor Roxa - Abaixo do T */
+#btn-secreta1-container {
+  position: fixed;
+  top: 85px; 
+  left: 15px;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#btn-show-secreta1 {
+  opacity: 0;
+  padding: 6px 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #6f42c1; 
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#btn-secreta1-container:hover #btn-show-secreta1 {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- ESTILOS GERAIS E ANIMAÇÕES --- */
+
+.close-button {
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 1px;
+}
+
+.close-button:hover {
+  color: rgb(226, 18, 226);
+}
 
 @keyframes abrirModal {
   0% {
@@ -198,168 +250,28 @@ body {
 .modal-content.animar {
   animation: abrirModal 0.4s ease forwards;
 }
-/* style.css */
 
-.card-animation-effect {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px; /* Adapte ao seu card */
-  opacity: 0;
-  pointer-events: none; /* Garante que não interfira com cliques */
-  background: radial-gradient(circle at center, rgba(128, 0, 128, 0.6) 0%, transparent 70%); /* Névoa roxa */
-  /* background: radial-gradient(circle at center, rgba(138, 43, 226, 0.6) 0%, transparent 70%); */ /* Ou um roxo mais claro */
-  filter: blur(5px); /* Efeito de névoa */
-  transform: scale(0.5); /* Começa pequeno */
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out; /* Transição suave */
+/* Estilos da Fofoca */
+#fofoca-container {
+  display: none;
+  background-color: rgba(30, 0, 50, 0.85);
+  border: 1px solid #ff00cc;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 20px;
+  max-width: 600px;
+  box-shadow: 0 0 15px rgba(255, 0, 204, 0.5);
+  text-align: center;
 }
 
-.card-animation-effect.animate-card-pull {
-  animation: pullEffect 0.5s ease-out forwards; /* Duração e tipo da animação */
+#fofoca-title {
+  margin: 0 0 10px 0;
+  color: #ff00cc;
+  font-size: 22px;
 }
 
-@keyframes pullEffect {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-    filter: blur(5px);
-  }
-  50% {
-    opacity: 1; /* Atinge opacidade máxima */
-    transform: scale(1.2); /* Cresce um pouco */
-    filter: blur(0px); /* Tira o desfoque */
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.5); /* Cresce mais e desaparece */
-    filter: blur(10px); /* Aumenta o desfoque ao desaparecer */
-  }
+#fofoca-text {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.4;
 }
-
-/* Garanta que o .card tenha position: relative; para o efeito absoluto funcionar */
-.card {
-  position: relative; /* Adicione ou verifique se já existe */
-  /* ... outras propriedades do seu .card ... */
-}
-
-/* Adicione ao seu .card-inner para garantir que o efeito não escape das bordas */
-.card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-    border-radius: 10px; /* Garanta que o efeito respeite as bordas da carta */
-    overflow: hidden; /* Esconde partes do efeito que saiam do card */
-}
-
-/*carta especial */
-#btn-carta-especial {
-  opacity: 0;
-  padding: 6px 12px;
-  font-size: 12px;
-  border: none;
-  border-radius: 6px;
-  background-color: #ff00cc;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  
-}
-
-#btn-container:hover #btn-carta-especial {
-  opacity: 1;
-  pointer-events: auto;
-}
-/* botao mudar fundo */
-#btn-mudar-fundo-container {
- position: fixed;
-  top: 50px;
-  left: 60px;  
-  width: 120px;
-  height: 40px;
-  cursor: pointer;
-}
-
-#btn-mudar-fundo {
-  opacity: 0;
-  padding: 6px 12px;
-  font-size: 12px;
-  border: none;
-  border-radius: 6px;
-  background-color: #00cc88;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-#btn-mudar-fundo-container:hover #btn-mudar-fundo {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-
-
-.close-button {
-  color: #fff;
-  font-size: 36px;
-  font-weight: bold;
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 1px;
-}
-
-.close-button:hover {
-  color: rgb(226, 18, 226);
-}
-#btn-specific-card-container {
-  position: fixed;
-  top: 50px; /* Adjust position as needed */
-  left: 15px;
-  width: 60px;
-  height: 30px;
-  cursor: pointer;
-}
-
-/* ... (estilos do btn-show-yuk-card) ... */
-
-/* NOVO: Estilos para o botão Razzle */
-#btn-razzle-card-container {
-  position: fixed;
-  top: 85px; /* Posição abaixo do botão 'Y' */
-  left: 15px;
-  width: 60px;
-  height: 30px;
-  cursor: pointer;
-}
-
-#btn-show-razzle-card {
-  opacity: 0;
-  padding: 6px 12px;
-  font-size: 12px;
-  border: none;
-  border-radius: 6px;
-  background-color: #28a745; /* Cor verde */
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-#btn-razzle-card-container:hover #btn-show-razzle-card {
-  opacity: 1;
-  pointer-events: auto;
-}
-/* FIM DA ADIÇÃO */
-
-
-
-/* ... (resto do seu CSS continua igual) ... */
