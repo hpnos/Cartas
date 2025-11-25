@@ -2,35 +2,25 @@
 // CONFIGURAÇÃO DE VOLUME
 // ------------------------------------------------------------------
 const volumeSlider = document.getElementById("volume-slider");
-let volumeGlobal = parseFloat(volumeSlider.value); // Começa com o valor do HTML (0.5)
+let volumeGlobal = parseFloat(volumeSlider.value); 
 
-// Atualiza o volume quando o slider mexe
 volumeSlider.addEventListener("input", (e) => {
   volumeGlobal = parseFloat(e.target.value);
-  // Se tiver algo tocando agora, ajusta o volume em tempo real
   if (audioAtual) {
     audioAtual.volume = volumeGlobal;
   }
 });
-// ------------------------------------------------------------------
 
-// Variável para controlar o som que está tocando atualmente
+// Variável para controlar o som
 let audioAtual = null;
 
-// Função auxiliar para gerenciar o som (Toca o novo e para o antigo)
 function tocarSomGerenciado(novoAudio) {
-  // Se já existir um som tocando, pausa e reinicia ele
   if (audioAtual) {
     audioAtual.pause();
     audioAtual.currentTime = 0;
   }
-
-  // Define o novo som como o atual
   audioAtual = novoAudio;
-  
-  // APLICA O VOLUME DEFINIDO NO SLIDER
   audioAtual.volume = volumeGlobal;
-
   audioAtual.play().catch(error => console.log("Erro ao reproduzir áudio:", error));
 }
 
@@ -44,11 +34,9 @@ const imagens = [
   "images/treta.png", "images/emma.png", "images/wicked.png", "images/fernanda.png",
   "images/alan.png", "images/hela.png", "images/marllus.png", "images/starboy.png",
   "images/gui.png", "images/rolf.png",
-  
-  // Imagens extras
-  "images/GarraY.png",
-  "images/verso.png", "images/Verso 2.png", "images/Verso3.png",
-  "images/telefone.png", "images/secreta1.png", "images/razzledazzle.png"
+  "images/GarraY.png", "images/verso.png", "images/Verso 2.png", "images/Verso3.png",
+  "images/telefone.png", "images/secreta1.png", "images/secreta2.png", "images/secreta4.png", 
+  "images/razzledazzle.png", "images/ovo.png"
 ];
 
 // Pré-carregamento
@@ -90,12 +78,12 @@ const sounds = {
   "images/rolf.png": new Audio("sounds/80.mp3"),
   "images/marllus.png": new Audio("sounds/77.mp3"),
   
-  // Extras
+  // Extras e Secretas
   "images/razzledazzle.png": new Audio("sounds/55-botao.mp3"),
   "images/GarraY.png": new Audio("sounds/GarraY.mp3"),
+  "images/secreta2.png": new Audio("sounds/secreta2.mp3"),
 };
 
-// Função antiga atualizada para usar o gerenciador
 function playSound(image) {
   if (sounds[image]) {
     tocarSomGerenciado(sounds[image]);
@@ -103,60 +91,100 @@ function playSound(image) {
 }
 
 // ==========================================================
-// REWARD POOL
+// POOL PRINCIPAL (JOGO NORMAL)
 // ==========================================================
 const rewardPool = [
-  // === COMUNS (12 Cartas - Total 55%) ===
-  // 11 cartas @ 4.58%
-  { image: "images/mahito.png", chance: 4.58, fofoca: "Você fica com as duas cartas. Conto pra ninguém." },
-  { image: "images/junkrat.png", chance: 4.58, fofoca: "Menina! Não é que foi usada duas bombas?!, escolha 2 números para explodir!" },
-  { image: "images/sunfire.png", chance: 4.58, fofoca: "Fiquei sabendo que a pessoa que foi anulada levou um time out junto!" }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/razzle.png", chance: 2.29, fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },
-  { image: "images/dazzle.png", chance: 2.29, fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },
-  { image: "images/berry.png", chance: 4.58, fofoca: "Fiquei sabendo que o Streamer teve q comer um docinho para relaxar e suportar tanto troll nesse jogo" },
-  { image: "images/jh.png", chance: 4.58, fofoca: "É mas fiquei sabendo que esse amigo nao ligou pra sua mensagem, eu nao jogaria mais com ele, no lugar da declaração, escolha uma pessoa pra n jogar hoje." },
-  { image: "images/nahida.png", chance: 4.58, fofoca: "Essa é capaz de tudo para sentir a energia da natureza, um jogador foi silenciado por falar das plantinhas! Dê um bom Timeout em um Jogador!" },
-  { image: "images/furina.png", chance: 4.58, fofoca: "Os fãs adoram essa ai, começaram até usar estáticos dela nas redes sociais! 1 emote pros Subs da Furina disponível." }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/emma.png", chance: 4.58, fofoca: "Se a loja for por sorteio, pegue um papel e jogue fora, aos comandos da rainha." }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/fernanda.png", chance: 4.58, fofoca: "Ela ainda escolheu uma música que ia tocar na live! Que absurdo!" }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/alan.png", chance: 4.58, fofoca: "Em outros tempos ele te ensinaria fazer uma poção para rir, aproveitar os stories e vamos de TBT, faça uma piada se for boa tire mais uma carta." }, // IMAGEM NÃO ENCONTRADA
-  // 1 carta @ 4.62% (para somar 55%)
-  { image: "images/marllus.png", chance: 4.62, isFofoqueiro: true, fofoca: "Psiu! Uma carta secreta foi adicionada ao jogo!" },
+  // === COMUNS ===
+  { image: "images/mahito.png", chance: 4.58, rarity: 'Comum', fofoca: "Você fica com as duas cartas. Conto pra ninguém." },
+  { image: "images/junkrat.png", chance: 4.58, rarity: 'Comum', type: 'rivalidad', fofoca: "Menina! Não é que foi usada duas bombas?!, escolha 2 números para explodir!" }, // RIVALIDADE (Adicionado)
+  { image: "images/sunfire.png", chance: 4.58, rarity: 'Comum', fofoca: "Fiquei sabendo que a pessoa que foi anulada levou um time out junto!" },
+  { image: "images/razzle.png", chance: 2.29, rarity: 'Comum', fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },
+  { image: "images/dazzle.png", chance: 2.29, rarity: 'Comum', fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },
+  { image: "images/berry.png", chance: 4.58, rarity: 'Comum', fofoca: "Fiquei sabendo que o Streamer teve q comer um docinho para relaxar e suportar tanto troll nesse jogo" },
+  { image: "images/jh.png", chance: 4.58, rarity: 'Comum', fofoca: "É mas fiquei sabendo que esse amigo nao ligou pra sua mensagem, eu nao jogaria mais com ele, no lugar da declaração, escolha uma pessoa pra n jogar hoje." },
+  { image: "images/nahida.png", chance: 4.58, rarity: 'Comum', fofoca: "Essa é capaz de tudo para sentir a energia da natureza, um jogador foi silenciado por falar das plantinhas! Dê um bom Timeout em um Jogador!" },
+  { image: "images/furina.png", chance: 4.58, rarity: 'Comum', fofoca: "Os fãs adoram essa ai, começaram até usar estáticos dela nas redes sociais! 1 emote pros Subs da Furina disponível." },
+  { image: "images/emma.png", chance: 4.58, rarity: 'Comum', type: 'rivalidad', fofoca: "Se a loja for por sorteio, pegue um papel e jogue fora, aos comandos da rainha." }, // RIVALIDADE (Adicionado)
+  { image: "images/fernanda.png", chance: 4.58, rarity: 'Comum', fofoca: "Ela ainda escolheu uma música que ia tocar na live! Que absurdo!" },
+  { image: "images/alan.png", chance: 4.58, rarity: 'Comum', fofoca: "Em outros tempos ele te ensinaria fazer uma poção para rir, aproveitar os stories e vamos de TBT, faça uma piada se for boa tire mais uma carta." },
+  { image: "images/marllus.png", chance: 4.62, rarity: 'Comum', isFofoqueiro: true, fofoca: "Psiu! Uma carta secreta foi adicionada ao jogo!" },
 
-  // === INCOMUNS (9 Cartas - Total 27%) ===
-  // 9 cards @ 3.0%
-  { image: "images/joel.png", chance: 3.0, fofoca: "Eu vi ele lutando pra sobreviver, mas tinha algo mais valioso lá. Você pode roubar cartas INCOMUM também." },
-  { image: "images/gus.png", chance: 3.0, fofoca: "Eu vi ele lá com vários fantasmas, tinha para ele e mais alguém, escolha 1 jogador para ser protegido também." },
-  { image: "images/secreta4.png", chance: 3.0, fofoca: "Fiquei sabendo que é possível ver um pedaço do futuro daqui! + 10 minutos de live!" },
-  { image: "images/espadachim.png", chance: 3.0, fofoca: "Isso é balela, o jogador tem direito nenhum, ele fica sem comprar por 1 dia!" },
-  { image: "images/juno.png", chance: 3.0, fofoca: "Essa ai é encrenca! deu um boost de velocidade no aliado e agora além disso, seu aliado possui altas chances de comprar na próxima loja, mesmo q ja tenha comprado, acredita?" },
-   { image: "images/mavuika.png", chance: 3.0, fofoca: "Fiquei sabendo que mais recrutas são bem vindos, ririri." },  
-   { image: "images/tempestade.png", chance: 3.0, fofoca: "Levou e levou bonito! Além disso, 3 pessoas não podem comprar cartas com pontos de bot hoje." }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/starboy.png", chance: 3.0, fofoca: "Essa ja foi vilã em uma temporada passada, boatos que mais uma pessoa foi escolhida, só que para não comprar por 1 loja." },
-  { image: "images/gui.png", chance: 3.0, fofoca: "Tio Gui está de bom humor hoje, esta carta vale como 2x pro COMBO." }, // IMAGEM NÃO ENCONTRADA
+  // === INCOMUNS ===
+  { image: "images/joel.png", chance: 3.0, rarity: 'Incomum', type: 'rivalidad', fofoca: "Eu vi ele lutando pra sobreviver, mas tinha algo mais valioso lá. Você pode roubar cartas INCOMUM também." }, // RIVALIDADE (Adicionado)
+  { image: "images/gus.png", chance: 3.0, rarity: 'Incomum', fofoca: "Eu vi ele lá com vários fantasmas, tinha para ele e mais alguém, escolha 1 jogador para ser protegido também." },
+  { image: "images/secreta4.png", chance: 3.0, rarity: 'Secreta', fofoca: "Fiquei sabendo que é possível ver um pedaço do futuro daqui! + 10 minutos de live!" },
+  { image: "images/espadachim.png", chance: 3.0, rarity: 'Incomum', type: 'rivalidad', fofoca: "Isso é balela, o jogador tem direito nenhum, ele fica sem comprar por 1 dia!" }, // RIVALIDADE (Adicionado)
+  { image: "images/juno.png", chance: 3.0, rarity: 'Incomum', fofoca: "Essa ai é encrenca! deu um boost de velocidade no aliado e agora além disso, seu aliado possui altas chances de comprar na próxima loja, mesmo q ja tenha comprado, acredita?" },
+  { image: "images/mavuika.png", chance: 3.0, fofoca: "Fiquei sabendo que mais recrutas são bem vindos, ririri." },  
+  { image: "images/tempestade.png", chance: 3.0, rarity: 'Incomum', fofoca: "Levou e levou bonito! Além disso, 3 pessoas não podem comprar cartas com pontos de bot hoje." },
+  { image: "images/starboy.png", chance: 3.0, rarity: 'Incomum', type: 'rivalidad', fofoca: "Essa ja foi vilã em uma temporada passada, boatos que mais uma pessoa foi escolhida, só que para não comprar por 1 loja." }, // RIVALIDADE
+  { image: "images/gui.png", chance: 3.0, rarity: 'Incomum', fofoca: "Tio Gui está de bom humor hoje, esta carta vale como 2x pro COMBO." },
 
-  // === RARAS (6 Cartas - Total 16.5%) ===
-  // 6 cards @ 2.75%
-  { image: "images/apolo.png", chance: 2.75, fofoca: "Ela foi la, falou com o Streamer e ainda ganhou 1 carta de graça!" },
-  { image: "images/vampira.png", chance: 2.75, fofoca: "O Roubo prejudicou muito o usuario que ele morreu, a carta q vc roubou o texto sai da coleção do jogador mas não vai para a sua." },
-  { image: "images/xilonen.png", chance: 2.75, fofoca: "Fiquei sabendo que independente da música que estiver tocando, alguem ai não curtiu o som e fica sem comprar cartas por 1 dia." }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/treta.png", chance: 2.75, fofoca: "Você ganha 3 pontos de vantagem na categoria que escolher!" },
-  // { image: "images/Wicked.png", chance: 2.75, fofoca: "Elas estão em alta menina, Versos das cartas temáticos até o final da live." }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/hela.png", chance: 2.75, fofoca: "Uma dica oculta revelada foi adicionada aos feitiços." }, // IMAGEM NÃO ENCONTRADA
+  // === RARAS ===
+  { image: "images/apolo.png", chance: 2.75, rarity: 'Rara', fofoca: "Ela foi la, falou com o Streamer e ainda ganhou 1 carta de graça!" },
+  { image: "images/vampira.png", chance: 2.75, rarity: 'Rara', type: 'rivalidad', fofoca: "O Roubo prejudicou muito o usuario que ele morreu, a carta q vc roubou o texto sai da coleção do jogador mas não vai para a sua." }, // RIVALIDADE
+  { image: "images/xilonen.png", chance: 2.75, rarity: 'Rara', fofoca: "Fiquei sabendo que independente da música que estiver tocando, alguem ai não curtiu o som e fica sem comprar cartas por 1 dia." },
+  { image: "images/treta.png", chance: 2.75, rarity: 'Rara', type: 'rivalidad', fofoca: "Você ganha 3 pontos de vantagem na categoria que escolher!" }, // RIVALIDADE
+  { image: "images/wicked.png", chance: 2.75, rarity: 'Rara', fofoca: "Elas estão em alta menina, Versos das cartas temáticos até o final da live." },
+  { image: "images/hela.png", chance: 2.75, rarity: 'Rara', fofoca: "Uma dica oculta revelada foi adicionada aos feitiços." },
 
-  // === LENDÁRIAS (3 Cartas - Total 1.5%) ===
-  // 3 cards @ 0.5%
-  { image: "images/NewBofe.png", chance: 0.5, fofoca: "Tava linda as anotações, eu vi até um adesivo no meio! Ta certo?! Vc ganha um adesivo junto." },
-  { image: "images/rhaenyra.png", chance: 0.5, fofoca: "Syrax veio acompanhado da rainha! \n\tSyrax - RIVALIDADE: Dracarys! é o fim, queimou até a morte, escolha alguém para não participar mais do evento.(mas ela ganha as cartas físicas que restou na carteira independente de número)." }, // IMAGEM NÃO ENCONTRADA
-  // { image: "images/Rolf.png", chance: 0.5, fofoca: "Ou você pode pedir pro Streamer fazer 1 skin de uma carta de temporadas passadas do tema SI-FI ou Medieval, você ganha a carta." } // IMAGEM NÃO ENCONTRADA
+  // === LENDÁRIAS ===
+  { image: "images/NewBofe.png", chance: 0.5, rarity: 'Lendaria', fofoca: "Tava linda as anotações, eu vi até um adesivo no meio! Ta certo?! Vc ganha um adesivo junto." },
+    // { image: "images/Rolf.png", chance: 0.5, fofoca: "Ou você pode pedir pro Streamer fazer 1 skin de uma carta de temporadas passadas do tema SI-FI ou Medieval, você ganha a carta." } // IMAGEM NÃO ENCONTRADA
+  { image: "images/rhaenyra.png", chance: 0.5, rarity: 'Lendaria', fofoca: "Syrax veio acompanhado da rainha! \n\tSyrax - RIVALIDADE: Dracarys! é o fim, queimou até a morte, escolha alguém para não participar mais do evento.(mas ela ganha as cartas físicas que restou na carteira independente de número)." },
 ];
 
-// Função de Sorteio
+// ==========================================================
+// POOL DA MINI LOJA (ELPHABA)
+// ==========================================================
+const miniShopRewardPool = [
+  // > CARTA DO OVO - 10%
+  { image: "images/ovo.png", chance: 10, rarity: 'Secreta', fofoca: "Um ovo misterioso..." },
+  
+  // > SECRETA 4 - 10%
+  { image: "images/secreta4.png", chance: 10, rarity: 'Secreta', fofoca: "Fiquei sabendo que é possível ver um pedaço do futuro daqui!" },
+
+  // > CARTAS RARAS - 70% (Dividido por 6 cartas = ~11.67% cada)
+  { image: "images/treta.png", chance: 11.67, rarity: 'Rara', fofoca: "Você ganha 3 pontos de vantagem na categoria que escolher!" },
+  { image: "images/apolo.png", chance: 11.67, rarity: 'Rara', fofoca: "Ela foi la, falou com o Streamer e ainda ganhou 1 carta de graça!" },
+  { image: "images/xilonen.png", chance: 11.67, rarity: 'Rara', fofoca: "Fiquei sabendo que independente da música que estiver tocando, alguem ai não curtiu o som..." },
+  { image: "images/hela.png", chance: 11.67, rarity: 'Rara', fofoca: "Uma dica oculta revelada foi adicionada aos feitiços." },
+  { image: "images/wicked.png", chance: 11.67, rarity: 'Rara', fofoca: "Elas estão em alta menina, Versos das cartas temáticos até o final da live." },
+  { image: "images/vampira.png", chance: 11.67, rarity: 'Rara', fofoca: "O Roubo prejudicou muito o usuario..." },
+
+  // > CARTAS LENDÁRIAS 10% (Dividido por 3 cartas = ~3.33% cada)
+  { image: "images/NewBofe.png", chance: 3.33, rarity: 'Lendaria', fofoca: "Tava linda as anotações, eu vi até um adesivo no meio!" },
+  { image: "images/rhaenyra.png", chance: 3.33, rarity: 'Lendaria', fofoca: "Syrax veio acompanhado da rainha!" },
+  { image: "images/rolf.png", chance: 3.33, rarity: 'Lendaria', fofoca: "Ou você pode pedir pro Streamer fazer 1 skin..." },
+
+  // > CARTAS SECRETAS 10% (Dividido por 2 cartas = 5% cada)
+  { image: "images/secreta1.png", chance: 5, rarity: 'Secreta', fofoca: "Carta dos ratos secreta!" },
+  { image: "images/secreta2.png", chance: 5, rarity: 'Secreta', fofoca: "Carta Xilonen Rave!" },
+];
+
+
+// Variável para rastrear se a ÚLTIMA carta foi rivalidade
+let ultimaCartaFoiRivalidade = false;
+
+// Função de Sorteio Padrão
 function getRandomReward() {
   const totalChance = rewardPool.reduce((sum, reward) => sum + reward.chance, 0);
   let random = Math.random() * totalChance;
 
   for (const reward of rewardPool) {
+    if (random < reward.chance) {
+      return reward;
+    }
+    random -= reward.chance;
+  }
+}
+
+// Função de Sorteio da Mini Loja
+function getMiniShopReward() {
+  const totalChance = miniShopRewardPool.reduce((sum, reward) => sum + reward.chance, 0);
+  let random = Math.random() * totalChance;
+
+  for (const reward of miniShopRewardPool) {
     if (random < reward.chance) {
       return reward;
     }
@@ -171,6 +199,9 @@ let proximaCartaTemFofoca = false;
 
 const fofocaContainer = document.getElementById("fofoca-container");
 const fofocaText = document.getElementById("fofoca-text");
+const btnElphaba = document.getElementById("btn-elphaba-passiva");
+const miniLojaContainer = document.getElementById("mini-loja-container");
+const miniLojaGrid = document.getElementById("mini-loja-grid");
 
 
 for (let i = 0; i < 24; i++) {
@@ -198,19 +229,35 @@ for (let i = 0; i < 24; i++) {
       card.style.visibility = "hidden";
       cardInner.innerHTML = '';
 
+      // Resetar displays do modal
+      fofocaContainer.style.display = "none";
+      btnElphaba.style.display = "none";
+      miniLojaContainer.style.display = "none";
+      document.getElementById("reward-image").style.display = "block";
+
       // --- LÓGICA DA FOFOCA ---
       if (proximaCartaTemFofoca && (reward.fofoca || reward.fofoca === "")) { 
         fofocaText.innerHTML = reward.fofoca.replace(/\n/g, '<br>'); 
         fofocaContainer.style.display = "block"; 
         proximaCartaTemFofoca = false; 
-      } else {
-        fofocaContainer.style.display = "none"; 
       }
 
       if (reward.isFofoqueiro) {
         proximaCartaTemFofoca = true; 
       }
-      // --- FIM DA LÓGICA DA FOFOCA ---
+
+      // --- LÓGICA DA ELPHABA (WICKED) ---
+      // Se a carta é Wicked (imagem contém wicked) E a anterior foi Rivalidade
+      if (reward.image.includes("wicked") && ultimaCartaFoiRivalidade) {
+        btnElphaba.style.display = "block"; // Mostra o botão
+      }
+
+      // Atualiza o status para a próxima jogada
+      if (reward.type === 'rivalidad') {
+        ultimaCartaFoiRivalidade = true;
+      } else {
+        ultimaCartaFoiRivalidade = false;
+      }
 
       document.getElementById("reward-image").innerHTML = `<img src="${reward.image}" alt="Recompensa">`;
       document.getElementById("reward-modal").style.display = "flex";
@@ -219,7 +266,6 @@ for (let i = 0; i < 24; i++) {
       void modalContent.offsetWidth;
       modalContent.classList.add("animar");
 
-      // Toca o som usando o gerenciador (aplica volume e corta o anterior)
       playSound(reward.image);
     }, 400);
   });
@@ -227,55 +273,91 @@ for (let i = 0; i < 24; i++) {
   gameBoard.appendChild(card);
 }
 
+// --- LÓGICA DO BOTÃO DA ELPHABA (MINI LOJA) ---
+btnElphaba.addEventListener("click", () => {
+  document.getElementById("reward-image").style.display = "none";
+  fofocaContainer.style.display = "none";
+  btnElphaba.style.display = "none";
+  
+  miniLojaContainer.style.display = "block";
+  miniLojaGrid.innerHTML = "";
+
+  for(let j=0; j<4; j++) {
+    const miniCard = document.createElement("div");
+    miniCard.classList.add("mini-card");
+    
+    miniCard.addEventListener("click", () => {
+      const rareReward = getMiniShopReward(); 
+      
+      miniLojaContainer.style.display = "none";
+      document.getElementById("reward-image").style.display = "block";
+      document.getElementById("reward-image").innerHTML = `<img src="${rareReward.image}" alt="Recompensa Rara">`;
+      
+      if(rareReward.fofoca) {
+        fofocaText.innerHTML = rareReward.fofoca.replace(/\n/g, '<br>');
+        fofocaContainer.style.display = "block";
+      }
+
+      modalContent.classList.remove("animar");
+      void modalContent.offsetWidth;
+      modalContent.classList.add("animar");
+      playSound(rareReward.image);
+    });
+
+    miniLojaGrid.appendChild(miniCard);
+  }
+});
+
+
 // --- BOTÕES ESPECIAIS ---
 
 // Botão RAZZLE (R)
 document.getElementById("btn-show-razzle-card").addEventListener("click", () => {
-  const modal = document.getElementById("reward-modal");
+  resetModal();
   const rewardImage = document.getElementById("reward-image");
-  fofocaContainer.style.display = "none"; 
-
   rewardImage.innerHTML = `<img src="images/razzledazzle.png" alt="Razzle Card">`;
-  modal.style.display = "flex";
-  modalContent.classList.remove("animar");
-  void modalContent.offsetWidth; 
-  modalContent.classList.add("animar");
-
+  showModal();
   const botaoSom = new Audio("sounds/55-botao.mp3");
   tocarSomGerenciado(botaoSom);
 });
 
-// Botão TELEFONE (T)
-document.getElementById("btn-show-telefone").addEventListener("click", () => {
-  const modal = document.getElementById("reward-modal");
+// Botão SECRETA 2 (S2)
+document.getElementById("btn-show-secreta2").addEventListener("click", () => {
+  resetModal();
   const rewardImage = document.getElementById("reward-image");
-  fofocaContainer.style.display = "none"; 
-
-  rewardImage.innerHTML = `<img src="images/secreta2.png" alt="Telefone">`;
-  modal.style.display = "flex";
-  modalContent.classList.remove("animar");
-  void modalContent.offsetWidth; 
-  modalContent.classList.add("animar");
-
-  const somTelefone = new Audio("sounds/secreta2.mp3");
-  tocarSomGerenciado(somTelefone);
+  rewardImage.innerHTML = `<img src="images/secreta2.png" alt="Secreta 2">`;
+  showModal();
+  const somSecreta2 = new Audio("sounds/secreta2.mp3");
+  tocarSomGerenciado(somSecreta2);
 });
 
 // Botão SECRETA 1 (S1)
 document.getElementById("btn-show-secreta1").addEventListener("click", () => {
-  const modal = document.getElementById("reward-modal");
+  resetModal();
   const rewardImage = document.getElementById("reward-image");
-  fofocaContainer.style.display = "none"; 
-
   rewardImage.innerHTML = `<img src="images/secreta1.png" alt="Secreta 1">`;
+  showModal();
+  const somSecreta = new Audio("sounds/secreta1.mp3");
+  tocarSomGerenciado(somSecreta);
+});
+
+// Funções auxiliares para botões especiais
+function resetModal() {
+  const modal = document.getElementById("reward-modal");
+  fofocaContainer.style.display = "none"; 
+  btnElphaba.style.display = "none";
+  miniLojaContainer.style.display = "none";
+  document.getElementById("reward-image").style.display = "block";
+  return modal;
+}
+
+function showModal() {
+  const modal = document.getElementById("reward-modal");
   modal.style.display = "flex";
   modalContent.classList.remove("animar");
   void modalContent.offsetWidth; 
   modalContent.classList.add("animar");
-
-  const somSecreta = new Audio("sounds/secreta1.mp3");
-  tocarSomGerenciado(somSecreta);
-});
+}
 
 
 //Botao de mudar verso
@@ -295,10 +377,7 @@ const btnMudarVerso = document.getElementById("btn-mudar-verso");
 const versosCartas = document.querySelectorAll(".card-face.front");
 
 btnMudarVerso.addEventListener("click", () => {
-  // Atualiza o índice para a próxima imagem
   indiceAtual = (indiceAtual + 1) % versos.length;
-
-  // Atualiza o backgroundImage de todas as cartas
   versosCartas.forEach((verso) => {
     verso.style.backgroundImage = `url("${versos[indiceAtual]}")`;
   });
@@ -308,10 +387,3 @@ btnMudarVerso.addEventListener("click", () => {
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
 });
-
-
-
-
-
-
-
