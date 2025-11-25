@@ -348,3 +348,75 @@ body {
   opacity: 1; /* A barra aparece */
 }
 
+/* ... (MANTENHA TODO O CSS ANTERIOR AQUI) ... */
+/* Cole o código abaixo NO FINAL do seu arquivo style.css */
+
+/* Botão Especial da Elphaba */
+#btn-elphaba-passiva {
+  display: block; /* IMPORTANTE: Faz o botão ocupar uma linha de bloco */
+  margin: 15px auto; /* IMPORTANTE: "auto" nas laterais centraliza o bloco */
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(45deg, #28a745, #6f42c1); 
+  border: 2px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(40, 167, 69, 0.7);
+  animation: pulsare 1.5s infinite;
+}
+
+@keyframes pulsare {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Container da Mini Loja (dentro do modal) */
+#mini-loja-container {
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.9); /* Fundo mais escuro para destaque */
+  padding: 40px; /* Mais espaçamento interno */
+  border-radius: 20px;
+  border: 3px solid #6f42c1; /* Borda mais grossa */
+  text-align: center;
+  width: 90%; /* Ocupa quase a largura toda do modal */
+  max-width: 1200px; /* Limite máximo bem maior */
+  box-shadow: 0 0 30px rgba(111, 66, 193, 0.6); /* Brilho roxo atrás */
+}
+
+/* Título da Mini Loja */
+#mini-loja-container h3 {
+  font-size: 36px; /* Texto bem grande */
+  margin-bottom: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#mini-loja-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cartas lado a lado */
+  gap: 30px; /* Espaço maior entre as cartas */
+  justify-items: center;
+}
+
+.mini-card {
+  width: 200px; /* AUMENTADO: De 80px para 200px */
+  height: 280px; /* AUMENTADO: De 112px para 280px */
+  background-image: url("images/verso.png");
+  background-size: cover;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 2px solid white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.mini-card:hover {
+  transform: scale(1.1); /* Aumenta 10% ao passar o mouse */
+  box-shadow: 0 0 25px #28a745; /* Brilho verde intenso */
+  border-color: #28a745;
+  z-index: 10;
+}
