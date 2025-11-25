@@ -360,12 +360,7 @@ function showModal() {
 // Botão Mudar Verso
 const versos = [
   'images/verso.png',
-  'images/Verso 2.png',
-  'images/Verso3.png',
-  'images/Verso 4.png',
-  'images/Verso 5.png',
-  'images/Verso 6.png',
-  'images/Verso 7.png',
+  'images/Verso2.png',
 ];
 let indiceAtual = 0;
 const btnMudarVerso = document.getElementById("btn-mudar-verso");
@@ -384,3 +379,4 @@ if(btnMudarVerso) {
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
 });
+
