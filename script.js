@@ -138,10 +138,10 @@ const rewardPool = [
   // 6 cards @ 2.75%
   { image: "images/apolo.png", chance: 2.75, fofoca: "Ela foi la, falou com o Streamer e ainda ganhou 1 carta de graça!" },
   { image: "images/vampira.png", chance: 2.75, fofoca: "O Roubo prejudicou muito o usuario que ele morreu, a carta q vc roubou o texto sai da coleção do jogador mas não vai para a sua." },
-  // { image: "images/Xilonen.png", chance: 2.75, fofoca: "Fiquei sabendo que independente da música que estiver tocando, alguem ai não curtiu o som e fica sem comprar cartas por 1 dia." }, // IMAGEM NÃO ENCONTRADA
+  { image: "images/xilonen.png", chance: 2.75, fofoca: "Fiquei sabendo que independente da música que estiver tocando, alguem ai não curtiu o som e fica sem comprar cartas por 1 dia." }, // IMAGEM NÃO ENCONTRADA
   { image: "images/treta.png", chance: 2.75, fofoca: "Você ganha 3 pontos de vantagem na categoria que escolher!" },
   // { image: "images/Wicked.png", chance: 2.75, fofoca: "Elas estão em alta menina, Versos das cartas temáticos até o final da live." }, // IMAGEM NÃO ENCONTRADA
-  // { image: "images/Hela.png", chance: 2.75, fofoca: "Uma dica oculta revelada foi adicionada aos feitiços." }, // IMAGEM NÃO ENCONTRADA
+  { image: "images/hela.png", chance: 2.75, fofoca: "Uma dica oculta revelada foi adicionada aos feitiços." }, // IMAGEM NÃO ENCONTRADA
 
   // === LENDÁRIAS (3 Cartas - Total 1.5%) ===
   // 3 cards @ 0.5%
@@ -307,6 +307,7 @@ btnMudarVerso.addEventListener("click", () => {
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
 });
+
 
 
 
