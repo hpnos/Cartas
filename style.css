@@ -19,15 +19,15 @@ body {
 
 #game-board {
   display: grid;
-  grid-template-columns: repeat(6, 200px); /* 5 colunas */
-  grid-template-rows: repeat(4, 200px); /* 4 linhas */
+  grid-template-columns: repeat(6, 200px);
+  grid-template-rows: repeat(4, 200px);
   gap: 20px;
 }
 
 .card {
-  width:148px;
+  width: 148px;
   height: 207px;
-  perspective: 1000px; /* Necessário para o efeito de rotação */
+  perspective: 1000px;
   position: relative;
 }
 
@@ -35,20 +35,21 @@ body {
   width: 100%;
   height: 100%;
   position: relative;
-  transform-style: preserve-3d; /* Permite a rotação 3D */
-  transition: transform 0.6s ease-out; /* Faz a animação suave */
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-out;
   border-radius: 10px;
   overflow: hidden;
 }
 
 .card-inner.flipped {
-  transform: rotateY(180deg); /* Rotaciona corretamente */
+  transform: rotateY(180deg);
 }
+
 .card-face {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Impede que o verso da carta seja visível quando virado */
+  backface-visibility: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,16 +70,16 @@ body {
   border-radius: 10px;
 }
 
-/* Modal: Fundo e conteúdo */
+/* Modal */
 .modal {
-  display: none; /* Inicialmente oculto */
+  display: none;
   position: fixed;
   z-index: 999;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro */
+  background-color: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -88,6 +89,9 @@ body {
   position: relative; 
   overflow: hidden;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #reward-message {
@@ -98,17 +102,17 @@ body {
 #reward-image img {
   width: 600px;
   height: 800px;
-  object-fit: contain; /* Garante que a imagem mantenha sua proporção */
+  object-fit: contain;
   border-radius: 30px;
 }
 
 /* --- BOTÕES DE MENU --- */
 
-/* Botão Mudar Verso (Mantido) */
+/* Botão Mudar Verso */
 #btn-mudar-verso-container {
   position: fixed;
   top: 15px;
-  left: 85px; /* Movido um pouco para a direita para não colar no botão R */
+  left: 85px;
   width: 120px;
   height: 40px;
   cursor: pointer;
@@ -133,7 +137,7 @@ body {
   pointer-events: auto;
 }
 
-/* Botão RAZZLE (R) - Cor Verde - Posição Topo */
+/* Botão RAZZLE (R) */
 #btn-razzle-card-container {
   position: fixed;
   top: 15px; 
@@ -162,8 +166,8 @@ body {
   pointer-events: auto;
 }
 
-/* Botão TELEFONE (T) - Cor Azul - Abaixo do R */
-#btn-telefone-container {
+/* Botão SECRETA 2 (S2) */
+#btn-secreta2-container {
   position: fixed;
   top: 50px; 
   left: 15px;
@@ -172,13 +176,13 @@ body {
   cursor: pointer;
 }
 
-#btn-show-telefone {
+#btn-show-secreta2 {
   opacity: 0;
   padding: 6px 12px;
   font-size: 12px;
   border: none;
   border-radius: 6px;
-  background-color: #007bff;
+  background-color: #007bff; /* Azul */
   color: white;
   cursor: pointer;
   box-shadow: 0 1px 1px rgba(0,0,0,0.3);
@@ -186,12 +190,12 @@ body {
   pointer-events: none;
 }
 
-#btn-telefone-container:hover #btn-show-telefone {
+#btn-secreta2-container:hover #btn-show-secreta2 {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* Botão SECRETA 1 (S1) - Cor Roxa - Abaixo do T */
+/* Botão SECRETA 1 (S1) */
 #btn-secreta1-container {
   position: fixed;
   top: 85px; 
@@ -220,7 +224,50 @@ body {
   pointer-events: auto;
 }
 
-/* --- ESTILOS GERAIS E ANIMAÇÕES --- */
+/* --- CONTROLE DE VOLUME --- */
+#volume-container {
+  position: fixed;
+  top: 195px;
+  left: 15px;
+  width: 40px; 
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 8px;
+  overflow: hidden;
+  transition: width 0.4s ease, background-color 0.3s;
+  z-index: 1000;
+}
+
+#volume-container label {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  user-select: none;
+}
+
+#volume-slider {
+  width: 90px;
+  cursor: pointer;
+  accent-color: #007bff;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s;
+}
+
+#volume-container:hover {
+  width: 160px;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+#volume-container:hover #volume-slider {
+  opacity: 1;
+}
+
+/* --- ELEMENTOS GERAIS E ANIMAÇÕES --- */
 
 .close-button {
   color: #fff;
@@ -229,7 +276,8 @@ body {
   cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 1px;
+  right: 20px;
+  z-index: 1001;
 }
 
 .close-button:hover {
@@ -275,86 +323,11 @@ body {
   font-size: 18px;
   line-height: 1.4;
 }
-/* ... estilos anteriores ... */
-
-/* NOVO: Estilo do Controle de Volume */
-#volume-container {
-  position: fixed;
-  top: 195px; /* Abaixo do botão S1 */
-  left: 15px;
-  width: 30px; /* Largura inicial fechada */
-  height: 150px; /* Altura para acomodar o slider vertical ou horizontal */
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-  transition: width 0.3s ease;
-  overflow: hidden;
-}
-
-/* ... seus estilos anteriores ... */
-
-/* NOVO: Estilo do Controle de Volume "Escondido" */
-#volume-container {
-  position: fixed;
-  top: 195px; /* Abaixo do botão S1 */
-  left: 15px;
-  
-  /* Estado inicial (Fechado) */
-  width: 40px; 
-  height: 40px;
-  background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
-  border-radius: 25px; /* Redondo */
-  
-  display: flex;
-  flex-direction: row; /* Organiza lado a lado (ícone - barra) */
-  align-items: center;
-  padding-left: 8px; /* Ajuste para centralizar o emoji */
-  
-  overflow: hidden; /* O que não couber na largura 40px fica escondido */
-  transition: width 0.4s ease, background-color 0.3s; /* Animação suave */
-  z-index: 1000; /* Garante que fique por cima */
-}
-
-/* Ícone de som (Label) */
-#volume-container label {
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  margin-right: 10px; /* Espaço entre o ícone e a barra */
-  user-select: none; /* Impede de selecionar o emoji como texto */
-}
-
-/* A barra deslizante (Input Range) */
-#volume-slider {
-  width: 90px; /* Tamanho da barra */
-  cursor: pointer;
-  accent-color: #007bff; /* Cor da bolinha da barra (Azul) */
-  opacity: 0; /* Começa invisível para não ver "vultos" */
-  transition: opacity 0.3s ease 0.1s; /* Demora um pouquinho para aparecer */
-}
-
-/* --- EFEITO AO PASSAR O MOUSE (HOVER) --- */
-
-#volume-container:hover {
-  width: 160px; /* Expande para mostrar a barra */
-  background-color: rgba(0, 0, 0, 0.9); /* Fundo fica mais escuro */
-}
-
-#volume-container:hover #volume-slider {
-  opacity: 1; /* A barra aparece */
-}
-
-/* ... (MANTENHA TODO O CSS ANTERIOR AQUI) ... */
-/* Cole o código abaixo NO FINAL do seu arquivo style.css */
 
 /* Botão Especial da Elphaba */
 #btn-elphaba-passiva {
-  display: block; /* IMPORTANTE: Faz o botão ocupar uma linha de bloco */
-  margin: 15px auto; /* IMPORTANTE: "auto" nas laterais centraliza o bloco */
+  display: block;
+  margin: 15px auto;
   padding: 10px 20px;
   font-size: 18px;
   font-weight: bold;
@@ -373,22 +346,21 @@ body {
   100% { transform: scale(1); }
 }
 
-/* Container da Mini Loja (dentro do modal) */
+/* Container da Mini Loja */
 #mini-loja-container {
   margin-top: 20px;
-  background-color: rgba(0, 0, 0, 0.9); /* Fundo mais escuro para destaque */
-  padding: 40px; /* Mais espaçamento interno */
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 40px;
   border-radius: 20px;
-  border: 3px solid #6f42c1; /* Borda mais grossa */
+  border: 3px solid #6f42c1;
   text-align: center;
-  width: 90%; /* Ocupa quase a largura toda do modal */
-  max-width: 1200px; /* Limite máximo bem maior */
-  box-shadow: 0 0 30px rgba(111, 66, 193, 0.6); /* Brilho roxo atrás */
+  width: 90%;
+  max-width: 1200px;
+  box-shadow: 0 0 30px rgba(111, 66, 193, 0.6);
 }
 
-/* Título da Mini Loja */
 #mini-loja-container h3 {
-  font-size: 36px; /* Texto bem grande */
+  font-size: 36px;
   margin-bottom: 30px;
   color: #fff;
   text-transform: uppercase;
@@ -397,14 +369,14 @@ body {
 
 #mini-loja-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 cartas lado a lado */
-  gap: 30px; /* Espaço maior entre as cartas */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
   justify-items: center;
 }
 
 .mini-card {
-  width: 200px; /* AUMENTADO: De 80px para 200px */
-  height: 280px; /* AUMENTADO: De 112px para 280px */
+  width: 200px;
+  height: 280px;
   background-image: url("images/verso.png");
   background-size: cover;
   border-radius: 15px;
@@ -415,8 +387,8 @@ body {
 }
 
 .mini-card:hover {
-  transform: scale(1.1); /* Aumenta 10% ao passar o mouse */
-  box-shadow: 0 0 25px #28a745; /* Brilho verde intenso */
+  transform: scale(1.1);
+  box-shadow: 0 0 25px #28a745;
   border-color: #28a745;
   z-index: 10;
 }
