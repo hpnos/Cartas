@@ -21,7 +21,7 @@
   <button id="btn-show-razzle-card">R</button>
 </div>
 
-<div id="#btn-secreta2-container">
+<div id="btn-secreta2-container">
   <button id="btn-show-secreta2">S2</button>
 </div>
 
@@ -29,14 +29,15 @@
   <button id="btn-show-secreta1">S1</button>
 </div>
 
-
 <div id="volume-container">
   <label for="volume-slider">🔊</label>
   <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5">
 </div>
+
   <div id="reward-modal" class="modal">
     <div class="modal-content">
       <span id="close-modal" class="close-button">&times;</span>
+      
       <div id="reward-message"></div>
       <div id="reward-image"></div>
 
@@ -44,14 +45,19 @@
         <h3 id="fofoca-title">✨ Fofoca Revelada! ✨</h3>
         <p id="fofoca-text"></p>
       </div>
+
+      <button id="btn-elphaba-passiva" style="display: none;">
+        🔮 Ativar Magia Elphaba 🔮
+      </button>
       
+      <div id="mini-loja-container" style="display: none;">
+        <h3>Escolha uma carta do Destino:</h3>
+        <div id="mini-loja-grid"></div>
+      </div>
+
     </div>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
