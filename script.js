@@ -251,13 +251,13 @@ document.getElementById("btn-show-telefone").addEventListener("click", () => {
   const rewardImage = document.getElementById("reward-image");
   fofocaContainer.style.display = "none"; 
 
-  rewardImage.innerHTML = `<img src="images/Telefone.png" alt="Telefone">`;
+  rewardImage.innerHTML = `<img src="images/secreta2.png" alt="Telefone">`;
   modal.style.display = "flex";
   modalContent.classList.remove("animar");
   void modalContent.offsetWidth; 
   modalContent.classList.add("animar");
 
-  const somTelefone = new Audio("sounds/Ligacao.mp3");
+  const somTelefone = new Audio("sounds/secreta2.mp3");
   tocarSomGerenciado(somTelefone);
 });
 
@@ -308,6 +308,7 @@ btnMudarVerso.addEventListener("click", () => {
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
 });
+
 
 
 
