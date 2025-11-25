@@ -68,6 +68,7 @@ const sounds = {
   "images/juno.png": new Audio("sounds/63.mp3"),
   "images/nahida.png": new Audio("sounds/64.mp3"),
   "images/dazzle.png": new Audio("sounds/55.mp3"), 
+  "images/mavuika.png": new Audio("sounds/65.mp3"),
   "images/furina.png": new Audio("sounds/66.mp3"),
   "images/tempestade.png": new Audio("sounds/67.mp3"),
   "images/vampira.png": new Audio("sounds/68.mp3"),
@@ -84,9 +85,10 @@ const sounds = {
   "images/rolf.png": new Audio("sounds/80.mp3"),
   "images/marllus.png": new Audio("sounds/77.mp3"),
   
+  
   // Extras e Secretas
   "images/razzledazzle.png": new Audio("sounds/55-botao.mp3"),
-  "images/GarraY.png": new Audio("sounds/GarraY.mp3"),
+  "images/secreta4.png": new Audio("sounds/secreta4.mp3"),
   "images/secreta2.png": new Audio("sounds/secreta2.mp3"),
 };
 
@@ -379,4 +381,5 @@ if(btnMudarVerso) {
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
 });
+
 
