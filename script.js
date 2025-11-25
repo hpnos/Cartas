@@ -111,7 +111,8 @@ const rewardPool = [
   { image: "images/mahito.png", chance: 4.58, fofoca: "Você fica com as duas cartas. Conto pra ninguém." },
   { image: "images/junkrat.png", chance: 4.58, fofoca: "Menina! Não é que foi usada duas bombas?!, escolha 2 números para explodir!" },
   { image: "images/sunfire.png", chance: 4.58, fofoca: "Fiquei sabendo que a pessoa que foi anulada levou um time out junto!" }, // IMAGEM NÃO ENCONTRADA
-  { image: "images/razzle.png", chance: 4.58, fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },
+  { image: "images/razzle.png", chance: 2.29, fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },
+  { image: "images/dazzle.png", chance: 2.29, fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },
   { image: "images/berry.png", chance: 4.58, fofoca: "Fiquei sabendo que o Streamer teve q comer um docinho para relaxar e suportar tanto troll nesse jogo" },
   { image: "images/jh.png", chance: 4.58, fofoca: "É mas fiquei sabendo que esse amigo nao ligou pra sua mensagem, eu nao jogaria mais com ele, no lugar da declaração, escolha uma pessoa pra n jogar hoje." },
   { image: "images/nahida.png", chance: 4.58, fofoca: "Essa é capaz de tudo para sentir a energia da natureza, um jogador foi silenciado por falar das plantinhas! Dê um bom Timeout em um Jogador!" },
@@ -126,10 +127,10 @@ const rewardPool = [
   // 9 cards @ 3.0%
   { image: "images/joel.png", chance: 3.0, fofoca: "Eu vi ele lutando pra sobreviver, mas tinha algo mais valioso lá. Você pode roubar cartas INCOMUM também." },
   { image: "images/gus.png", chance: 3.0, fofoca: "Eu vi ele lá com vários fantasmas, tinha para ele e mais alguém, escolha 1 jogador para ser protegido também." },
-  { image: "images/futurista.png", chance: 3.0, fofoca: "Fiquei sabendo que é possível ver um pedaço do futuro daqui! + 10 minutos de live!" },
+  { image: "images/secreta4.png", chance: 3.0, fofoca: "Fiquei sabendo que é possível ver um pedaço do futuro daqui! + 10 minutos de live!" },
   { image: "images/espadachim.png", chance: 3.0, fofoca: "Isso é balela, o jogador tem direito nenhum, ele fica sem comprar por 1 dia!" },
   { image: "images/juno.png", chance: 3.0, fofoca: "Essa ai é encrenca! deu um boost de velocidade no aliado e agora além disso, seu aliado possui altas chances de comprar na próxima loja, mesmo q ja tenha comprado, acredita?" },
-   { image: "images/dazzle.png", chance: 3.0, fofoca: "Você não sabe? O Dazzle morreu, o combo foi cortado!" },  
+   { image: "images/mavuika.png", chance: 3.0, fofoca: "Fiquei sabendo que mais recrutas são bem vindos, ririri." },  
    { image: "images/tempestade.png", chance: 3.0, fofoca: "Levou e levou bonito! Além disso, 3 pessoas não podem comprar cartas com pontos de bot hoje." }, // IMAGEM NÃO ENCONTRADA
   { image: "images/starboy.png", chance: 3.0, fofoca: "Essa ja foi vilã em uma temporada passada, boatos que mais uma pessoa foi escolhida, só que para não comprar por 1 loja." },
   { image: "images/gui.png", chance: 3.0, fofoca: "Tio Gui está de bom humor hoje, esta carta vale como 2x pro COMBO." }, // IMAGEM NÃO ENCONTRADA
@@ -307,6 +308,7 @@ btnMudarVerso.addEventListener("click", () => {
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("reward-modal").style.display = "none";
 });
+
 
 
 
