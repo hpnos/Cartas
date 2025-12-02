@@ -82,10 +82,16 @@ const sounds = {
   "images/hela.png": new Audio("sounds/76.mp3"),
   "images/starboy.png": new Audio("sounds/78.mp3"),
   "images/gui.png": new Audio("sounds/79.mp3"),
-  "images/rolf.png": new Audio("sounds/80.mp3"),
+  "images/split.png": new Audio("sounds/80.mp3"),
   "images/marllus.png": new Audio("sounds/77.mp3"),
   
   
+  //Skins
+  "images/mahitoskin.png": new Audio("sounds/51.mp3"),
+  "images/gusskin.png": new Audio("sounds/58.mp3"),
+  "images/jhskin.png": new Audio("sounds/59.mp3"),
+  "images/vampiraskin.png": new Audio("sounds/68.mp3"),
+
   // Extras e Secretas
   "images/razzledazzle.png": new Audio("sounds/55-botao.mp3"),
   "images/secreta4.png": new Audio("sounds/secreta4.mp3"),
@@ -123,7 +129,7 @@ const rewardPool = [
   // === INCOMUNS ===
   { image: "images/joel.png", chance: 3.0, rarity: 'Incomum', type: 'rivalidad', fofoca: "Eu vi ele lutando pra sobreviver, mas tinha algo mais valioso lá. Você pode roubar cartas INCOMUM também." },
   { image: "images/gus.png", chance: 3.0, rarity: 'Incomum', fofoca: "Eu vi ele lá com vários fantasmas, tinha para ele e mais alguém, escolha 1 jogador para ser protegido também." },
-  { image: "images/secreta4.png", chance: 3.0, rarity: 'Secreta', fofoca: "Fiquei sabendo que é possível ver um pedaço do futuro daqui! + 10 minutos de live!" },
+  { image: "images/secreta4.png", chance: 0.0, rarity: 'Secreta', fofoca: "Fiquei sabendo que é possível ver um pedaço do futuro daqui! + 10 minutos de live!" },
   { image: "images/espadachim.png", chance: 3.0, rarity: 'Incomum', type: 'rivalidad', fofoca: "Isso é balela, o jogador tem direito nenhum, ele fica sem comprar por 1 dia!" },
   { image: "images/juno.png", chance: 3.0, rarity: 'Incomum', fofoca: "Essa ai é encrenca! deu um boost de velocidade no aliado e agora além disso, seu aliado possui altas chances de comprar na próxima loja, mesmo q ja tenha comprado, acredita?" },
   { image: "images/mavuika.png", chance: 3.0, fofoca: "Fiquei sabendo que mais recrutas são bem vindos, ririri." },  
@@ -140,7 +146,8 @@ const rewardPool = [
   { image: "images/hela.png", chance: 2.75, rarity: 'Rara', type: 'rivalidad', fofoca: "Uma dica oculta revelada foi adicionada aos feitiços." },
 
   // === LENDÁRIAS ===
-  { image: "images/NewBofe.png", chance: 0.5, rarity: 'Lendaria', fofoca: "Tava linda as anotações, eu vi até um adesivo no meio! Ta certo?! Vc ganha um adesivo junto." },
+  { image: "images/NewBofe.png", chance: 0.0, rarity: 'Lendaria', fofoca: "Tava linda as anotações, eu vi até um adesivo no meio! Ta certo?! Vc ganha um adesivo junto." },
+  {image: "images/split.png", chance: 0.10, rarity: 'Lendaria', fofoca: "Ou você pode pedir pro Streamer fazer 1 skin de uma carta de temporadas passadas do tema SI-FI ou Medieval, você ganha a carta."},
   { image: "images/rhaenyra.png", chance: 0.5, rarity: 'Lendaria', type: 'rivalidad', fofoca: "Syrax veio acompanhado da rainha! \n\tSyrax - RIVALIDADE: Dracarys! é o fim, queimou até a morte, escolha alguém para não participar mais do evento.(mas ela ganha as cartas físicas que restou na carteira independente de número)." },
 ];
 
@@ -163,6 +170,15 @@ const miniShopRewardPool = [
   { image: "images/secreta2.png", chance: 5, rarity: 'Secreta', fofoca: "Carta Xilonen Rave!" },
 ];
 
+// =========================================================
+// POOL DE SKINS — MINI LOJA SPLIT
+// =========================================================
+const splitShopRewardPool = [
+  { image: "images/mahitoskin.png", chance: 25 },
+  { image: "images/gusskin.png", chance: 25 },
+  { image: "images/vampiraskin.png", chance: 25 }, 
+  { image: "images/jhskin.png", chance: 25 },
+];
 
 let ultimaCartaFoiRivalidade = false;
 
@@ -193,6 +209,18 @@ function getMiniShopReward() {
     random -= reward.chance;
   }
   return miniShopRewardPool[0];
+}
+
+// Função de sorteio da Split Shop
+function getSplitShopReward() {
+  const totalChance = splitShopRewardPool.reduce((sum, r) => sum + r.chance, 0);
+  let random = Math.random() * totalChance;
+
+  for (const reward of splitShopRewardPool) {
+    if (random < reward.chance) return reward;
+    random -= reward.chance;
+  }
+  return splitShopRewardPool[0];
 }
 
 const gameBoard = document.getElementById("game-board");
@@ -255,6 +283,12 @@ for (let i = 0; i < 24; i++) {
           btnElphaba.style.display = "block"; 
         }
 
+        // Lógica Split
+        if (reward.image.includes("split")) {
+         document.getElementById("btn-split-shop").style.display = "block";
+}
+
+
         // Atualiza Rivalidade
         if (reward.type === 'rivalidad') {
           ultimaCartaFoiRivalidade = true;
@@ -279,7 +313,49 @@ for (let i = 0; i < 24; i++) {
   gameBoard.appendChild(card);
 }
 
-// --- LÓGICA DA MINI LOJA ---
+// --- LÓGICA DA SPLIT SHOP ---
+const btnSplitShop = document.getElementById("btn-split-shop");
+
+if (btnSplitShop) {
+  btnSplitShop.addEventListener("click", () => {
+
+    document.getElementById("reward-image").style.display = "none";
+    if (fofocaContainer) fofocaContainer.style.display = "none"; // só para garantir que não apareça
+    btnSplitShop.style.display = "none";
+
+    miniLojaContainer.style.display = "block";
+    miniLojaGrid.innerHTML = "";
+
+    for (let j = 0; j < 4; j++) {
+
+      const miniCard = document.createElement("div");
+      miniCard.classList.add("mini-card");
+
+      miniCard.addEventListener("click", () => {
+
+        const reward = getSplitShopReward();
+
+        miniLojaContainer.style.display = "none";
+        document.getElementById("reward-image").style.display = "block";
+        document.getElementById("reward-image").innerHTML =
+          `<img src="${reward.image}" alt="Carta">`;
+
+        // NÃO TEM FOFOCA — então não exibe nada
+
+        modalContent.classList.remove("animar");
+        void modalContent.offsetWidth;
+        modalContent.classList.add("animar");
+
+        playSound(reward.image); // vai tocar o som da skin se você quiser depois
+      });
+
+      miniLojaGrid.appendChild(miniCard);
+    }
+  });
+}
+
+
+// --- LÓGICA DA MINI LOJA (ELPHABA SEM FOFOCA) ---
 if(btnElphaba) {
   btnElphaba.addEventListener("click", () => {
     document.getElementById("reward-image").style.display = "none";
@@ -298,16 +374,16 @@ if(btnElphaba) {
         
         miniLojaContainer.style.display = "none";
         document.getElementById("reward-image").style.display = "block";
-        document.getElementById("reward-image").innerHTML = `<img src="${rareReward.image}" alt="Recompensa Rara">`;
-        
-        if(rareReward.fofoca) {
-          fofocaText.innerHTML = rareReward.fofoca.replace(/\n/g, '<br>');
-          fofocaContainer.style.display = "block";
-        }
+        document.getElementById("reward-image").innerHTML =
+          `<img src="${rareReward.image}" alt="Recompensa Rara">`;
+
+        // 🚫 Removido: NÃO mostra fofoca
+        fofocaContainer.style.display = "none";
 
         modalContent.classList.remove("animar");
         void modalContent.offsetWidth;
         modalContent.classList.add("animar");
+
         playSound(rareReward.image);
       });
 
@@ -315,6 +391,7 @@ if(btnElphaba) {
     }
   });
 }
+
 
 // --- BOTÕES ESPECIAIS ---
 
